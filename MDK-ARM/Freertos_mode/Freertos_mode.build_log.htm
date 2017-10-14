@@ -1,0 +1,259 @@
+<html>
+<body>
+<pre>
+<h1>礦ision Build Log</h1>
+<h2>Tool Versions:</h2>
+IDE-Version: μVision V5.20.0.0
+Copyright (C) 2016 ARM Ltd and ARM Germany GmbH. All rights reserved.
+License Information: z zz, NJUPT, LIC=AK1EV-PIX8W-4AYDE-5T3IA-6PJ1T-5FZ3Z
+ 
+Tool Versions:
+Toolchain:       MDK-ARM Professional  Version: 5.20
+Toolchain Path:  D:\MDK5.12\ARM\ARMCC\Bin
+C Compiler:      Armcc.exe V5.06 update 2 (build 183)
+Assembler:       Armasm.exe V5.06 update 2 (build 183)
+Linker/Locator:  ArmLink.exe V5.06 update 2 (build 183)
+Library Manager: ArmAr.exe V5.06 update 2 (build 183)
+Hex Converter:   FromElf.exe V5.06 update 2 (build 183)
+CPU DLL:         SARMCM3.DLL V5.20
+Dialog DLL:      DCM.DLL V1.13.7.0
+Target DLL:      STLink\ST-LINKIII-KEIL_SWO.dll V2.0.18.0
+Dialog DLL:      TCM.DLL V1.14.9.0
+ 
+<h2>Project:</h2>
+E:\嵌入式\STM32\CODE\STM32F4CODE\Freertos\STITP各模块\文件部分\MDK-ARM\Freertos_mode.uvprojx
+Project File Date:  10/14/2017
+
+<h2>Output:</h2>
+*** Using Compiler 'V5.06 update 2 (build 183)', folder: 'D:\MDK5.12\ARM\ARMCC\Bin'
+Rebuild target 'Freertos_mode'
+compiling croutine.c...
+compiling queue.c...
+compiling list.c...
+compiling heap_4.c...
+compiling cmsis_os.c...
+compiling timers.c...
+compiling tasks.c...
+compiling event_groups.c...
+compiling port.c...
+compiling stm32f4xx_hal_pwr_ex.c...
+compiling stm32f4xx_hal_flash_ex.c...
+compiling stm32f4xx_hal.c...
+compiling stm32f4xx_hal_rcc_ex.c...
+compiling stm32f4xx_hal_flash.c...
+compiling stm32f4xx_hal_tim.c...
+compiling stm32f4xx_hal_cortex.c...
+compiling stm32f4xx_hal_gpio.c...
+compiling stm32f4xx_hal_dma.c...
+compiling stm32f4xx_hal_uart.c...
+compiling stm32f4xx_hal_tim_ex.c...
+compiling stm32f4xx_hal_pwr.c...
+compiling stm32f4xx_hal_flash_ramfunc.c...
+compiling stm32f4xx_hal_rcc.c...
+compiling stm32f4xx_hal_dma_ex.c...
+compiling stm32f4xx_ll_sdmmc.c...
+compiling stm32f4xx_ll_fmc.c...
+compiling stm32f4xx_hal_sd.c...
+assembling startup_stm32f407xx.s...
+compiling stm32f4xx_hal_ltdc.c...
+compiling stm32f4xx_hal_ltdc_ex.c...
+compiling system_stm32f4xx.c...
+compiling stm32f4xx_hal_msp.c...
+compiling freertos.c...
+../Src/freertos.c(162): warning:  #177-D: variable "m" was declared but never referenced
+    u8 m[20] = "AT";
+../Src/freertos.c: 1 warning, 0 errors
+compiling stm32f4xx_it.c...
+compiling main.c...
+compiling stm32f4xx_hal_timebase_TIM.c...
+compiling gpio.c...
+compiling usart.c...
+compiling sdio.c...
+compiling dma.c...
+compiling delay.c...
+compiling sys.c...
+compiling usrt.c...
+compiling sd.c...
+compiling lcd.c...
+..\HARDWARE\ltdc.h(37): error:  #20: identifier "LTDC_HandleTypeDef" is undefined
+  extern LTDC_HandleTypeDef LTDC_Handler;	    //LTDC?浔?
+..\HARDWARE\ltdc.h(38): error:  #20: identifier "DMA2D_HandleTypeDef" is undefined
+  extern DMA2D_HandleTypeDef DMA2D_Handler;   //DMA2D?浔?
+..\HARDWARE\lcd.c(488): warning:  #223-D: function "__HAL_RCC_FMC_CLK_ENABLE" declared implicitly
+  	__HAL_RCC_FMC_CLK_ENABLE();				//使??FMC时??
+..\HARDWARE\lcd.c(498): error:  #20: identifier "GPIO_AF12_FMC" is undefined
+  	GPIO_Initure.Alternate=GPIO_AF12_FMC;	//复??为FMC
+..\HARDWARE\lcd.c(534): error:  #20: identifier "FMC_DATA_ADDRESS_MUX_DISABLE" is undefined
+          SRAM_Handler.Init.DataAddressMux=FMC_DATA_ADDRESS_MUX_DISABLE;  //不复??????
+..\HARDWARE\lcd.c(535): error:  #20: identifier "FMC_MEMORY_TYPE_SRAM" is undefined
+          SRAM_Handler.Init.MemoryType=FMC_MEMORY_TYPE_SRAM;              //SRAM
+..\HARDWARE\lcd.c(537): error:  #20: identifier "FMC_BURST_ACCESS_MODE_DISABLE" is undefined
+          SRAM_Handler.Init.BurstAccessMode=FMC_BURST_ACCESS_MODE_DISABLE; //?欠?使??突发????,?龆?同步突发?娲?????效,?舜?未?玫?
+..\HARDWARE\lcd.c(538): error:  #20: identifier "FMC_WAIT_SIGNAL_POLARITY_LOW" is undefined
+          SRAM_Handler.Init.WaitSignalPolarity=FMC_WAIT_SIGNAL_POLARITY_LOW;//?却??藕诺募???,????突发模式??????????
+..\HARDWARE\lcd.c(539): error:  #20: identifier "FMC_WAIT_TIMING_BEFORE_WS" is undefined
+          SRAM_Handler.Init.WaitSignalActive=FMC_WAIT_TIMING_BEFORE_WS;   //?娲??????诘却?????之前??一??时?????诨??堑却??????诩?使??NWAIT
+..\HARDWARE\lcd.c(540): error:  #20: identifier "FMC_WRITE_OPERATION_ENABLE" is undefined
+          SRAM_Handler.Init.WriteOperation=FMC_WRITE_OPERATION_ENABLE;    //?娲???写使??
+..\HARDWARE\lcd.c(541): error:  #20: identifier "FMC_WAIT_SIGNAL_DISABLE" is undefined
+          SRAM_Handler.Init.WaitSignal=FMC_WAIT_SIGNAL_DISABLE;           //?却?使??位,?舜?未?玫?
+..\HARDWARE\lcd.c(542): error:  #20: identifier "FMC_EXTENDED_MODE_ENABLE" is undefined
+          SRAM_Handler.Init.ExtendedMode=FMC_EXTENDED_MODE_ENABLE;        //??写使?貌?同??时??
+..\HARDWARE\lcd.c(543): error:  #20: identifier "FMC_ASYNCHRONOUS_WAIT_DISABLE" is undefined
+          SRAM_Handler.Init.AsynchronousWait=FMC_ASYNCHRONOUS_WAIT_DISABLE;//?欠?使??同步传??模式?碌牡却??藕?,?舜?未?玫?
+..\HARDWARE\lcd.c(544): error:  #20: identifier "FMC_WRITE_BURST_DISABLE" is undefined
+          SRAM_Handler.Init.WriteBurst=FMC_WRITE_BURST_DISABLE;           //??止突发写
+..\HARDWARE\lcd.c(545): error:  #20: identifier "FMC_CONTINUOUS_CLOCK_SYNC_ASYNC" is undefined
+          SRAM_Handler.Init.ContinuousClock=FMC_CONTINUOUS_CLOCK_SYNC_ASYNC;
+..\HARDWARE\lcd.c(551): error:  #20: identifier "FMC_ACCESS_MODE_A" is undefined
+          FSMC_ReadWriteTim.AccessMode=FMC_ACCESS_MODE_A; //模式A
+..\HARDWARE\lcd.c: 1 warning, 15 errors
+compiling ltdc.c...
+..\HARDWARE\ltdc.h(37): error:  #20: identifier "LTDC_HandleTypeDef" is undefined
+  extern LTDC_HandleTypeDef LTDC_Handler;	    //LTDC?浔?
+..\HARDWARE\ltdc.h(38): error:  #20: identifier "DMA2D_HandleTypeDef" is undefined
+  extern DMA2D_HandleTypeDef DMA2D_Handler;   //DMA2D?浔?
+..\HARDWARE\ltdc.c(15): error:  #20: identifier "LTDC_HandleTypeDef" is undefined
+  LTDC_HandleTypeDef  LTDC_Handler;	    //LTDC?浔?
+..\HARDWARE\ltdc.c(16): error:  #20: identifier "DMA2D_HandleTypeDef" is undefined
+  DMA2D_HandleTypeDef DMA2D_Handler; 	    //DMA2D?浔?
+..\HARDWARE\ltdc.c(32): warning:  #223-D: function "__HAL_LTDC_ENABLE" declared implicitly
+  	if(sw==1) __HAL_LTDC_ENABLE(&LTDC_Handler);
+..\HARDWARE\ltdc.c(33): warning:  #223-D: function "__HAL_LTDC_DISABLE" declared implicitly
+  	else if(sw==0)__HAL_LTDC_DISABLE(&LTDC_Handler);
+..\HARDWARE\ltdc.c(41): warning:  #223-D: function "__HAL_LTDC_LAYER_ENABLE" declared implicitly
+  	if(sw==1) __HAL_LTDC_LAYER_ENABLE(&LTDC_Handler,layerx);
+..\HARDWARE\ltdc.c(42): warning:  #223-D: function "__HAL_LTDC_LAYER_DISABLE" declared implicitly
+  	else if(sw==0) __HAL_LTDC_LAYER_DISABLE(&LTDC_Handler,layerx);
+..\HARDWARE\ltdc.c(43): warning:  #223-D: function "__HAL_LTDC_RELOAD_CONFIG" declared implicitly
+  	__HAL_LTDC_RELOAD_CONFIG(&LTDC_Handler);
+..\HARDWARE\ltdc.c(139): error:  #20: identifier "DMA2D" is undefined
+  	DMA2D->CR=3<<16;				//?拇??鞯酱娲???模式
+..\HARDWARE\ltdc.c(221): error:  #20: identifier "DMA2D" is undefined
+  	DMA2D->CR=0<<16;				//?娲??鞯酱娲???模式
+..\HARDWARE\ltdc.c(263): error:  #20: identifier "RCC_PERIPHCLK_LTDC" is undefined
+      PeriphClkIniture.PeriphClockSelection=RCC_PERIPHCLK_LTDC;	//LTDC时?? 	
+..\HARDWARE\ltdc.c(264): error:  #136: struct "<unnamed>" has no field "PLLSAI"
+  	PeriphClkIniture.PLLSAI.PLLSAIN=pllsain;    
+..\HARDWARE\ltdc.c(265): error:  #136: struct "<unnamed>" has no field "PLLSAI"
+  	PeriphClkIniture.PLLSAI.PLLSAIR=pllsair;  
+..\HARDWARE\ltdc.c(266): error:  #136: struct "<unnamed>" has no field "PLLSAIDivR"
+  	PeriphClkIniture.PLLSAIDivR=pllsaidivr;
+..\HARDWARE\ltdc.c(281): warning:  #223-D: function "HAL_LTDC_SetWindowPosition" declared implicitly
+      HAL_LTDC_SetWindowPosition(&LTDC_Handler,sx,sy,layerx);  //???么翱诘?位??
+..\HARDWARE\ltdc.c(282): warning:  #223-D: function "HAL_LTDC_SetWindowSize" declared implicitly
+      HAL_LTDC_SetWindowSize(&LTDC_Handler,width,height,layerx);//???么翱诖?小    
+..\HARDWARE\ltdc.c(298): error:  #20: identifier "LTDC_LayerCfgTypeDef" is undefined
+  	LTDC_LayerCfgTypeDef pLayerCfg;
+..\HARDWARE\ltdc.c(315): warning:  #223-D: function "HAL_LTDC_ConfigLayer" declared implicitly
+  	HAL_LTDC_ConfigLayer(&LTDC_Handler,&pLayerCfg,layerx);   //??????选?械牟?
+..\HARDWARE\ltdc.c(370): error:  #20: identifier "RCC_PLLSAIDIVR_8" is undefined
+           LTDC_Clk_Set(288,4,RCC_PLLSAIDIVR_8);   //????????时?? 9Mhz 
+..\HARDWARE\ltdc.c(382): error:  #20: identifier "RCC_PLLSAIDIVR_4" is undefined
+          LTDC_Clk_Set(396,3,RCC_PLLSAIDIVR_4); //????????时?? 33M(?绻?双??,??要降??DCLK到:18.75Mhz  300/4/4,?呕岜冉虾?)
+..\HARDWARE\ltdc.c(393): error:  #20: identifier "RCC_PLLSAIDIVR_4" is undefined
+  		LTDC_Clk_Set(360,2,RCC_PLLSAIDIVR_4);//????????时??  45Mhz 
+..\HARDWARE\ltdc.c(419): error:  #20: identifier "LTDC" is undefined
+      LTDC_Handler.Instance=LTDC;
+..\HARDWARE\ltdc.c(420): error:  #20: identifier "LTDC_HSPOLARITY_AL" is undefined
+      LTDC_Handler.Init.HSPolarity=LTDC_HSPOLARITY_AL;         //水平同步极??
+..\HARDWARE\ltdc.c(421): error:  #20: identifier "LTDC_VSPOLARITY_AL" is undefined
+      LTDC_Handler.Init.VSPolarity=LTDC_VSPOLARITY_AL;         //垂直同步极??
+..\HARDWARE\ltdc.c(422): error:  #20: identifier "LTDC_DEPOLARITY_AL" is undefined
+      LTDC_Handler.Init.DEPolarity=LTDC_DEPOLARITY_AL;         //??使?芗???
+..\HARDWARE\ltdc.c(423): error:  #20: identifier "LTDC_PCPOLARITY_IPC" is undefined
+      LTDC_Handler.Init.PCPolarity=LTDC_PCPOLARITY_IPC;        //????时?蛹???
+..\HARDWARE\ltdc.c(435): warning:  #223-D: function "HAL_LTDC_Init" declared implicitly
+      HAL_LTDC_Init(&LTDC_Handler);
+..\HARDWARE\ltdc.c(450): error:  #20: identifier "LTDC_HandleTypeDef" is undefined
+  void HAL_LTDC_MspInit(LTDC_HandleTypeDef* hltdc)
+..\HARDWARE\ltdc.c(454): warning:  #223-D: function "__HAL_RCC_LTDC_CLK_ENABLE" declared implicitly
+      __HAL_RCC_LTDC_CLK_ENABLE();                //使??LTDC时??
+..\HARDWARE\ltdc.c(455): warning:  #223-D: function "__HAL_RCC_DMA2D_CLK_ENABLE" declared implicitly
+      __HAL_RCC_DMA2D_CLK_ENABLE();               //使??DMA2D时??
+..\HARDWARE\ltdc.c(474): error:  #20: identifier "GPIO_AF14_LTDC" is undefined
+      GPIO_Initure.Alternate=GPIO_AF14_LTDC;      //复??为LTDC
+..\HARDWARE\ltdc.c: 11 warnings, 21 errors
+compiling sdram.c...
+..\HARDWARE\sdram.h(16): error:  #20: identifier "SDRAM_HandleTypeDef" is undefined
+  extern SDRAM_HandleTypeDef SDRAM_Handler;//SDRAM?浔?
+..\HARDWARE\sdram.h(37): error:  #20: identifier "SDRAM_HandleTypeDef" is undefined
+  void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram);
+..\HARDWARE\sdram.c(15): error:  #20: identifier "SDRAM_HandleTypeDef" is undefined
+  SDRAM_HandleTypeDef SDRAM_Handler;   //SDRAM?浔?
+..\HARDWARE\sdram.c(20): error:  #20: identifier "FMC_SDRAM_TimingTypeDef" is undefined
+      FMC_SDRAM_TimingTypeDef SDRAM_Timing;
+..\HARDWARE\sdram.c(22): error:  #20: identifier "FMC_SDRAM_DEVICE" is undefined
+      SDRAM_Handler.Instance=FMC_SDRAM_DEVICE;                                  //SDRAM??BANK5,6  
+..\HARDWARE\sdram.c(23): error:  #20: identifier "FMC_SDRAM_BANK1" is undefined
+      SDRAM_Handler.Init.SDBank=FMC_SDRAM_BANK1;                           //SDRAM????BANK5??
+..\HARDWARE\sdram.c(24): error:  #20: identifier "FMC_SDRAM_COLUMN_BITS_NUM_9" is undefined
+      SDRAM_Handler.Init.ColumnBitsNumber=FMC_SDRAM_COLUMN_BITS_NUM_9;     //????量
+..\HARDWARE\sdram.c(25): error:  #20: identifier "FMC_SDRAM_ROW_BITS_NUM_13" is undefined
+      SDRAM_Handler.Init.RowBitsNumber=FMC_SDRAM_ROW_BITS_NUM_13;          //????量
+..\HARDWARE\sdram.c(26): error:  #20: identifier "FMC_SDRAM_MEM_BUS_WIDTH_16" is undefined
+      SDRAM_Handler.Init.MemoryDataWidth=FMC_SDRAM_MEM_BUS_WIDTH_16;       //?菘矶?为16位
+..\HARDWARE\sdram.c(27): error:  #20: identifier "FMC_SDRAM_INTERN_BANKS_NUM_4" is undefined
+      SDRAM_Handler.Init.InternalBankNumber=FMC_SDRAM_INTERN_BANKS_NUM_4;  //一共4??BANK
+..\HARDWARE\sdram.c(28): error:  #20: identifier "FMC_SDRAM_CAS_LATENCY_3" is undefined
+      SDRAM_Handler.Init.CASLatency=FMC_SDRAM_CAS_LATENCY_3;               //CAS为3
+..\HARDWARE\sdram.c(29): error:  #20: identifier "FMC_SDRAM_WRITE_PROTECTION_DISABLE" is undefined
+      SDRAM_Handler.Init.WriteProtection=FMC_SDRAM_WRITE_PROTECTION_DISABLE;//失??写保护
+..\HARDWARE\sdram.c(30): error:  #20: identifier "FMC_SDRAM_CLOCK_PERIOD_2" is undefined
+      SDRAM_Handler.Init.SDClockPeriod=FMC_SDRAM_CLOCK_PERIOD_2;           //SDRAM时??为HCLK/2=216M/2=108M=9.3ns
+..\HARDWARE\sdram.c(31): error:  #20: identifier "FMC_SDRAM_RBURST_ENABLE" is undefined
+      SDRAM_Handler.Init.ReadBurst=FMC_SDRAM_RBURST_ENABLE;                //使??突发
+..\HARDWARE\sdram.c(32): error:  #20: identifier "FMC_SDRAM_RPIPE_DELAY_1" is undefined
+      SDRAM_Handler.Init.ReadPipeDelay=FMC_SDRAM_RPIPE_DELAY_1;            //??通????时
+..\HARDWARE\sdram.c(41): warning:  #223-D: function "HAL_SDRAM_Init" declared implicitly
+      HAL_SDRAM_Init(&SDRAM_Handler,&SDRAM_Timing);  
+..\HARDWARE\sdram.c(48): error:  #20: identifier "SDRAM_HandleTypeDef" is undefined
+  void SDRAM_Initialization_Sequence(SDRAM_HandleTypeDef *hsdram)
+..\HARDWARE\sdram.c(52): error:  #20: identifier "FMC_SDRAM_CMD_CLK_ENABLE" is undefined
+      SDRAM_Send_Cmd(0,FMC_SDRAM_CMD_CLK_ENABLE,1,0); //时??????使??
+..\HARDWARE\sdram.c(54): error:  #20: identifier "FMC_SDRAM_CMD_PALL" is undefined
+      SDRAM_Send_Cmd(0,FMC_SDRAM_CMD_PALL,1,0);       //?????写娲???预?涞?
+..\HARDWARE\sdram.c(55): error:  #20: identifier "FMC_SDRAM_CMD_AUTOREFRESH_MODE" is undefined
+      SDRAM_Send_Cmd(0,FMC_SDRAM_CMD_AUTOREFRESH_MODE,8,0);//??????刷?麓??? 
+..\HARDWARE\sdram.c(64): error:  #20: identifier "FMC_SDRAM_CMD_LOAD_MODE" is undefined
+      SDRAM_Send_Cmd(0,FMC_SDRAM_CMD_LOAD_MODE,1,temp);   //????SDRAM??模式?拇???
+..\HARDWARE\sdram.c(70): warning:  #223-D: function "HAL_SDRAM_ProgramRefreshRate" declared implicitly
+  	HAL_SDRAM_ProgramRefreshRate(&SDRAM_Handler,823);	
+..\HARDWARE\sdram.c(76): error:  #20: identifier "SDRAM_HandleTypeDef" is undefined
+  void HAL_SDRAM_MspInit(SDRAM_HandleTypeDef *hsdram)
+..\HARDWARE\sdram.c(80): warning:  #223-D: function "__HAL_RCC_FMC_CLK_ENABLE" declared implicitly
+      __HAL_RCC_FMC_CLK_ENABLE();                 //使??FMC时??
+..\HARDWARE\sdram.c(92): error:  #20: identifier "GPIO_AF12_FMC" is undefined
+      GPIO_Initure.Alternate=GPIO_AF12_FMC;       //复??为FMC    
+..\HARDWARE\sdram.c(119): error:  #20: identifier "FMC_SDRAM_CommandTypeDef" is undefined
+      FMC_SDRAM_CommandTypeDef Command;
+..\HARDWARE\sdram.c(121): error:  #20: identifier "FMC_SDRAM_CMD_TARGET_BANK1" is undefined
+      if(bankx==0) target_bank=FMC_SDRAM_CMD_TARGET_BANK1;       
+..\HARDWARE\sdram.c(122): error:  #20: identifier "FMC_SDRAM_CMD_TARGET_BANK2" is undefined
+      else if(bankx==1) target_bank=FMC_SDRAM_CMD_TARGET_BANK2;   
+..\HARDWARE\sdram.c(127): warning:  #223-D: function "HAL_SDRAM_SendCommand" declared implicitly
+      if(HAL_SDRAM_SendCommand(&SDRAM_Handler,&Command,0X1000)==HAL_OK) //??SDRAM发??????
+..\HARDWARE\sdram.c: 4 warnings, 25 errors
+"Freertos_mode\Freertos_mode.axf" - 61 Error(s), 17 Warning(s).
+
+<h2>Software Packages used:</h2>
+
+Package Vendor: ARM
+                http://www.keil.com/pack/ARM.CMSIS.4.5.0.pack
+                ARM::CMSIS:CORE:4.3.0
+                CMSIS (Cortex Microcontroller Software Interface Standard)
+   * Component: CORE Version: 4.3.0
+
+<h2>Collection of Component include folders:</h2>
+  E:\嵌入式\STM32\CODE\STM32F4CODE\Freertos\STITP各模块\文件部分\MDK-ARM\RTE
+  D:\MDK5.12\ARM\PACK\ARM\CMSIS\4.5.0\CMSIS\Include
+  D:\MDK5.12\ARM\PACK\Keil\STM32F4xx_DFP\2.11.0\Drivers\CMSIS\Device\ST\STM32F4xx\Include
+
+<h2>Collection of Component Files used:</h2>
+
+   * Component: ARM::CMSIS:CORE:4.3.0
+Target not created.
+Build Time Elapsed:  00:01:32
+</pre>
+</body>
+</html>
