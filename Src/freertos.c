@@ -41,22 +41,36 @@
 #include "sys.h"
 #include "uart.h"
 #include "usart.h"
+#include "lcd.h"
+#include "sdio.h"
 /* USER CODE END Includes */
 
 /* Variables -----------------------------------------------------------------*/
 osThreadId defaultTaskHandle;
 osThreadId Task_LEDHandle;
-osThreadId Task_SDHandle;
 
 /* USER CODE BEGIN Variables */
 osThreadId Task_usartHandle;
 osThreadId Task_WIFIHandle;
 /* USER CODE END Variables */
-
+//通过串口打印SD卡相关信息
+void show_sdcard_info(void)
+{
+	switch(SDCardInfo.CardType)
+	{
+		case STD_CAPACITY_SD_CARD_V1_1:printf("Card Type:SDSC V1.1\r\n");break;
+		case STD_CAPACITY_SD_CARD_V2_0:printf("Card Type:SDSC V2.0\r\n");break;
+		case HIGH_CAPACITY_SD_CARD:printf("Card Type:SDHC V2.0\r\n");break;
+		case MULTIMEDIA_CARD:printf("Card Type:MMC Card\r\n");break;
+	}	
+  	printf("Card ManufacturerID:%d\r\n",SDCardInfo.SD_cid.ManufacturerID);	//制造商ID
+ 	printf("Card RCA:%d\r\n",SDCardInfo.RCA);								//卡相对地址
+	printf("Card Capacity:%d MB\r\n",(u32)(SDCardInfo.CardCapacity>>20));	//显示容量
+ 	printf("Card BlockSize:%d\r\n\r\n",SDCardInfo.CardBlockSize);			//显示块大小
+}
 /* Function prototypes -------------------------------------------------------*/
 void StartDefaultTask(void const * argument);
 void Func_LED(void const * argument);
-void Func_SD(void const * argument);
 
 void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 
@@ -94,10 +108,6 @@ void MX_FREERTOS_Init(void) {
   /* definition and creation of Task_LED */
   osThreadDef(Task_LED, Func_LED, osPriorityNormal, 0, 128);
   Task_LEDHandle = osThreadCreate(osThread(Task_LED), NULL);
-
-  /* definition and creation of Task_SD */
-  osThreadDef(Task_SD, Func_SD, osPriorityIdle, 0, 128);
-  Task_SDHandle = osThreadCreate(osThread(Task_SD), NULL);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -142,24 +152,18 @@ void Func_LED(void const * argument)
   /* USER CODE END Func_LED */
 }
 
-/* Func_SD function */
-void Func_SD(void const * argument)
-{
-  /* USER CODE BEGIN Func_SD */
-  /* Infinite loop */
-  for(;;)
-  {
-    osDelay(1);
-  }
-  /* USER CODE END Func_SD */
-}
-
 /* USER CODE BEGIN Application */
 void Func_usart(void const * argument)
 {
   /* USER CODE BEGIN Func_LED */
+  
 	u8 len;
-  u8 m[20] = "AT";
+  POINT_COLOR=RED;//设置字体为红色 
+	LCD_ShowString(30,50,200,16,16,"Aopllo STM32F4/F7");	
+	LCD_ShowString(30,70,200,16,16,"SD CARD TEST");	
+	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
+	LCD_ShowString(30,110,200,16,16,"2017/10/15");   
+	LCD_ShowString(30,130,200,16,16,"KEY0:Read Sector 0");
   /* Infinite loop */
   for(;;)
   {
@@ -184,19 +188,27 @@ void Func_WIFI(void const * argument)
 {
   /* USER CODE BEGIN Func_LED */
 	u8 length;
-  u8 m[20] = "AT";
   /* Infinite loop */
-  HAL_UART_Transmit(&huart3,(uint8_t*)m ,3,1000);
   for(;;)
   {
+    if(!MX_SDIO_SD_Init())
+    {
+      show_sdcard_info();	//打印SD卡相关信息
+      POINT_COLOR=BLUE;	//设置字体为蓝色 
+      //检测SD卡成功 											    
+      LCD_ShowString(30,150,200,16,16,"SD Card OK    ");
+      LCD_ShowString(30,170,200,16,16,"SD Card Size:     MB");
+      LCD_ShowNum(30+13*8,170,SDCardInfo.CardCapacity>>20,5,16);//显示SD卡容量	
+      
+    }
     if(USART3_RX_STA&0x8000)
 		{					   
 			length=USART3_RX_STA&0x3fff;//得到此次接收到的数据长度
 			printf("\r\n您发送的消息为:\r\n");
-			HAL_UART_Transmit(&UART1_Handler,(uint8_t*)USART3_RX_BUF,length,1000);	//发送接收到的数据
-			while(__HAL_UART_GET_FLAG(&UART1_Handler,UART_FLAG_TC)!=SET);		//等待发送结束
+			HAL_UART_Transmit(&huart3,(uint8_t*)USART3_RX_BUF,length,1000);	//发送接收到的数据
+			while(__HAL_UART_GET_FLAG(&huart3,UART_FLAG_TC)!=SET);		//等待发送结束
 			printf("\r\n\r\n");//插入换行
-			USART_RX_STA=0;
+			USART3_RX_STA=0;
 		}
     //HAL_UART_Transmit(&huart3,(uint8_t*)m ,3,1000);
     osDelay(1);

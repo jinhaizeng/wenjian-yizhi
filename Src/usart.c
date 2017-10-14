@@ -60,6 +60,17 @@ void MX_USART3_UART_Init(void)
   {
     Error_Handler();
   }
+  //UART 初始化设置
+	UART1_Handler.Instance=USART1;					    //USART1
+	UART1_Handler.Init.BaudRate=115200;				    //波特率
+	UART1_Handler.Init.WordLength=UART_WORDLENGTH_8B;   //字长为8位数据格式
+	UART1_Handler.Init.StopBits=UART_STOPBITS_1;	    //一个停止位
+	UART1_Handler.Init.Parity=UART_PARITY_NONE;		    //无奇偶校验位
+	UART1_Handler.Init.HwFlowCtl=UART_HWCONTROL_NONE;   //无硬件流控
+	UART1_Handler.Init.Mode=UART_MODE_TX_RX;		    //收发模式
+	HAL_UART_Init(&UART1_Handler);					    //HAL_UART_Init()会使能UART1
+	
+	HAL_UART_Receive_IT(&UART1_Handler, (u8 *)aRxBuffer, RXBUFFERSIZE);//该函数会开启接收中断：标志位UART_IT_RXNE，并且设置接收缓冲以及接收缓冲接收最大数据量(使用回调函数处理中断需要调用该函数）
 
 }
 
@@ -67,6 +78,30 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
 {
 
   GPIO_InitTypeDef GPIO_InitStruct;
+	GPIO_InitTypeDef GPIO_Initure;
+  
+  if(uartHandle->Instance==USART1)//如果是串口1，进行串口1 MSP初始化
+	{
+		__HAL_RCC_GPIOA_CLK_ENABLE();			//使能GPIOA时钟
+		__HAL_RCC_USART1_CLK_ENABLE();			//使能USART1时钟
+	
+		GPIO_Initure.Pin=GPIO_PIN_9;			//PA9
+		GPIO_Initure.Mode=GPIO_MODE_AF_PP;		//复用推挽输出
+		GPIO_Initure.Pull=GPIO_PULLUP;			//上拉
+		GPIO_Initure.Speed=GPIO_SPEED_FAST;		//高速
+		GPIO_Initure.Alternate=GPIO_AF7_USART1;	//复用为USART1
+		HAL_GPIO_Init(GPIOA,&GPIO_Initure);	   	//初始化PA9
+
+		GPIO_Initure.Pin=GPIO_PIN_10;			//PA10
+		HAL_GPIO_Init(GPIOA,&GPIO_Initure);	   	//初始化PA10
+		__HAL_UART_DISABLE_IT(uartHandle,UART_IT_TC);
+#if EN_USART1_RX
+		__HAL_UART_ENABLE_IT(uartHandle,UART_IT_RXNE);		//开启接收中断
+		HAL_NVIC_EnableIRQ(USART1_IRQn);				//使能USART1中断通道
+		HAL_NVIC_SetPriority(USART1_IRQn,3,3);			//抢占优先级3，子优先级3
+#endif	
+	}
+  
   if(uartHandle->Instance==USART3)
   {
   /* USER CODE BEGIN USART3_MspInit 0 */
@@ -87,6 +122,7 @@ void HAL_UART_MspInit(UART_HandleTypeDef* uartHandle)
     HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
     /* Peripheral interrupt init */
+    __HAL_UART_ENABLE_IT(uartHandle,UART_IT_RXNE);		//开启接收中断
     HAL_NVIC_SetPriority(USART3_IRQn, 5, 0);
     HAL_NVIC_EnableIRQ(USART3_IRQn);
   /* USER CODE BEGIN USART3_MspInit 1 */

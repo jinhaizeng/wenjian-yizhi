@@ -334,7 +334,7 @@
               <MiscControls>--C99</MiscControls>
               <Define>USE_HAL_DRIVER,STM32F407xx</Define>
               <Undefine></Undefine>
-              <IncludePath>../Inc;../Drivers/STM32F4xx_HAL_Driver/Inc;../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;../Middlewares/Third_Party/FreeRTOS/Source/include;../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;../Drivers/CMSIS/Include;../Drivers/CMSIS/Device/ST/STM32F4xx/Include;..\SYSTEM;..\HARDWARE</IncludePath>
+              <IncludePath>../Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc;     ../Drivers/STM32F4xx_HAL_Driver/Inc/Legacy;     ../Middlewares/Third_Party/FreeRTOS/Source/portable/RVDS/ARM_CM4F;     ../Middlewares/Third_Party/FreeRTOS/Source/include;     ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS;     ../Drivers/CMSIS/Include;     ../Drivers/CMSIS/Device/ST/STM32F4xx/Include;     ..\SYSTEM;     ..\HADEWARE</IncludePath>
             </VariousControls>
           </Cads>
           <Aads>
@@ -503,6 +503,21 @@
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_flash_ramfunc.c</FilePath>
             </File>
             <File>
+              <FileName>stm32f4xx_hal_sram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sram.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_fsmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_fsmc.c</FilePath>
+            </File>
+            <File>
+              <FileName>stm32f4xx_ll_fmc.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c</FilePath>
+            </File>
+            <File>
               <FileName>stm32f4xx_ll_sdmmc.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_ll_sdmmc.c</FilePath>
@@ -511,21 +526,6 @@
               <FileName>stm32f4xx_hal_sd.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Drivers/STM32F4xx_HAL_Driver/Src/stm32f4xx_hal_sd.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_ll_fmc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fmc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_hal_ltdc.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc.c</FilePath>
-            </File>
-            <File>
-              <FileName>stm32f4xx_hal_ltdc_ex.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_hal_ltdc_ex.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -588,14 +588,19 @@
               <FilePath>../Src/usart.c</FilePath>
             </File>
             <File>
-              <FileName>sdio.c</FileName>
+              <FileName>fsmc.c</FileName>
               <FileType>1</FileType>
-              <FilePath>../Src/sdio.c</FilePath>
+              <FilePath>../Src/fsmc.c</FilePath>
             </File>
             <File>
               <FileName>dma.c</FileName>
               <FileType>1</FileType>
               <FilePath>../Src/dma.c</FilePath>
+            </File>
+            <File>
+              <FileName>sdio.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>../Src/sdio.c</FilePath>
             </File>
           </Files>
         </Group>
@@ -623,27 +628,17 @@
           </Files>
         </Group>
         <Group>
-          <GroupName>Hardware</GroupName>
+          <GroupName>HADEWARE</GroupName>
           <Files>
-            <File>
-              <FileName>sd.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\sd.c</FilePath>
-            </File>
             <File>
               <FileName>lcd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\lcd.c</FilePath>
+              <FilePath>..\HADEWARE\lcd.c</FilePath>
             </File>
             <File>
-              <FileName>ltdc.c</FileName>
+              <FileName>sd.c</FileName>
               <FileType>1</FileType>
-              <FilePath>..\HARDWARE\ltdc.c</FilePath>
-            </File>
-            <File>
-              <FileName>sdram.c</FileName>
-              <FileType>1</FileType>
-              <FilePath>..\HARDWARE\sdram.c</FilePath>
+              <FilePath>..\HADEWARE\sd.c</FilePath>
             </File>
           </Files>
         </Group>

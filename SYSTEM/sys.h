@@ -122,15 +122,5 @@ typedef __I uint8_t vuc8;
 #define PKout(n)   BIT_ADDR(GPIOK_ODR_Addr,n)  //输出 
 #define PKin(n)    BIT_ADDR(GPIOK_IDR_Addr,n)  //输入
 
-#define ON	1
-#define OFF	0
-#define Write_Through() (*(__IO uint32_t*)0XE000EF9C=1UL<<2) //Cache透写模式
-
-
-//以下为汇编函数
-void WFI_SET(void);		//执行WFI指令
-void INTX_DISABLE(void);//关闭所有中断
-void INTX_ENABLE(void);	//开启所有中断
-void MSR_MSP(u32 addr);	//设置堆栈地址 
 
 #endif

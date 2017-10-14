@@ -1,6 +1,7 @@
 #ifndef _LCD_H
 #define _LCD_H
 #include "sys.h"
+#include "stm32f4xx_hal.h"
 //////////////////////////////////////////////////////////////////////////////////	 
 //本程序只供学习使用，未经作者许可，不得用于其它任何用途
 //ALIENTEK STM32F7开发板
@@ -34,8 +35,7 @@ typedef struct
 }_ltdc_dev; 
 
 extern _ltdc_dev lcdltdc;		            //管理LCD LTDC参数
-extern LTDC_HandleTypeDef LTDC_Handler;	    //LTDC句柄
-extern DMA2D_HandleTypeDef DMA2D_Handler;   //DMA2D句柄
+
 
 #define LCD_PIXEL_FORMAT_ARGB8888       0X00    
 #define LCD_PIXEL_FORMAT_RGB888         0X01    
@@ -56,18 +56,4 @@ extern DMA2D_HandleTypeDef DMA2D_Handler;   //DMA2D句柄
 //LCD帧缓冲区首地址,这里定义在SDRAM里面.
 #define LCD_FRAME_BUF_ADDR			0XC0000000  
 
-void LTDC_Switch(u8 sw);					//LTDC开关
-void LTDC_Layer_Switch(u8 layerx,u8 sw);	//层开关
-void LTDC_Select_Layer(u8 layerx);			//层选择
-void LTDC_Display_Dir(u8 dir);				//显示方向控制
-void LTDC_Draw_Point(u16 x,u16 y,u32 color);//画点函数
-u32 LTDC_Read_Point(u16 x,u16 y);			//读点函数
-void LTDC_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u32 color);			//矩形单色填充函数
-void LTDC_Color_Fill(u16 sx,u16 sy,u16 ex,u16 ey,u16 *color);	//矩形彩色填充函数
-void LTDC_Clear(u32 color);					//清屏函数
-u8 LTDC_Clk_Set(u32 pllsain,u32 pllsair,u32 pllsaidivr);//LTDC时钟配置
-void LTDC_Layer_Window_Config(u8 layerx,u16 sx,u16 sy,u16 width,u16 height);//LTDC层窗口设置
-void LTDC_Layer_Parameter_Config(u8 layerx,u32 bufaddr,u8 pixformat,u8 alpha,u8 alpha0,u8 bfac1,u8 bfac2,u32 bkcolor);//LTDC基本参数设置
-u16 LTDC_PanelID_Read(void);				//LCD ID读取函数
-void LTDC_Init(void);						//LTDC初始化函数
 #endif 

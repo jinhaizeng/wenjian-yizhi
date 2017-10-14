@@ -39,7 +39,7 @@
 #include "dma.h"
 
 /* USER CODE BEGIN 0 */
-
+#include "sys.h"
 /* USER CODE END 0 */
 
 SD_HandleTypeDef hsd;
@@ -49,22 +49,31 @@ DMA_HandleTypeDef hdma_sdio_tx;
 
 /* SDIO init function */
 
-void MX_SDIO_SD_Init(void)
+u8 MX_SDIO_SD_Init(void)
 {
-
+  u8 SD_Error;
+  
   hsd.Instance = SDIO;
   hsd.Init.ClockEdge = SDIO_CLOCK_EDGE_RISING;
   hsd.Init.ClockBypass = SDIO_CLOCK_BYPASS_DISABLE;
   hsd.Init.ClockPowerSave = SDIO_CLOCK_POWER_SAVE_DISABLE;
   hsd.Init.BusWide = SDIO_BUS_WIDE_1B;
   hsd.Init.HardwareFlowControl = SDIO_HARDWARE_FLOW_CONTROL_DISABLE;
-  hsd.Init.ClockDiv = 0;
-  if (HAL_SD_Init(&hsd, &SDCardInfo) != SD_OK)
+  hsd.Init.ClockDiv = SDIO_TRANSFER_CLK_DIV;
+  SD_Error=HAL_SD_Init(&hsd,&SDCardInfo);
+  if(SD_Error!=SD_OK) 
   {
-    Error_Handler();
+    printf("SD_Init ERROR!\r\n");
+    return 1;
   }
-
-  HAL_SD_WideBusOperation_Config(&hsd, SDIO_BUS_WIDE_4B);
+    
+  SD_Error=HAL_SD_WideBusOperation_Config(&hsd,SDIO_BUS_WIDE_4B);//使能宽总线模式
+  if(SD_Error!=SD_OK)
+  {
+    printf("SD_Init ERROR!");
+    return 1;
+  }
+  return 0;
 
 }
 
@@ -113,7 +122,7 @@ void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
     hdma_sdio_rx.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
     hdma_sdio_rx.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
     hdma_sdio_rx.Init.Mode = DMA_PFCTRL;
-    hdma_sdio_rx.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_sdio_rx.Init.Priority = DMA_PRIORITY_LOW;
     hdma_sdio_rx.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
     hdma_sdio_rx.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
     hdma_sdio_rx.Init.MemBurst = DMA_MBURST_INC4;
@@ -133,11 +142,12 @@ void HAL_SD_MspInit(SD_HandleTypeDef* sdHandle)
     hdma_sdio_tx.Init.PeriphDataAlignment = DMA_PDATAALIGN_WORD;
     hdma_sdio_tx.Init.MemDataAlignment = DMA_MDATAALIGN_WORD;
     hdma_sdio_tx.Init.Mode = DMA_PFCTRL;
-    hdma_sdio_tx.Init.Priority = DMA_PRIORITY_HIGH;
+    hdma_sdio_tx.Init.Priority = DMA_PRIORITY_LOW;
     hdma_sdio_tx.Init.FIFOMode = DMA_FIFOMODE_ENABLE;
     hdma_sdio_tx.Init.FIFOThreshold = DMA_FIFO_THRESHOLD_FULL;
     hdma_sdio_tx.Init.MemBurst = DMA_MBURST_INC4;
     hdma_sdio_tx.Init.PeriphBurst = DMA_PBURST_INC4;
+   
     if (HAL_DMA_Init(&hdma_sdio_tx) != HAL_OK)
     {
       Error_Handler();

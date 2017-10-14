@@ -151,26 +151,24 @@ void USART3_IRQHandler(void)
 	if((__HAL_UART_GET_FLAG(&huart3,UART_FLAG_RXNE)!=RESET))  //接收中断(接收到的数据必须是0x0d 0x0a结尾)
 	{
         HAL_UART_Receive(&huart3,&Res3,1,1000); 
-        HAL_GPIO_WritePin(LED1_GPIO_Port,LED1_Pin,GPIO_PIN_SET);
-        HAL_UART_Transmit(&UART1_Handler,(uint8_t*)Res3,1,1000);
-//		if((USART3_RX_STA&0x8000)==0)//接收未完成
-//		{
-//			if(USART3_RX_STA&0x4000)//接收到了0x0d
-//			{
-//				if(Res3!=0x0a)USART3_RX_STA=0;//接收错误,重新开始
-//				else USART3_RX_STA|=0x8000;	//接收完成了 
-//			}
-//			else //还没收到0X0D
-//			{	
-//				if(Res3==0x0d)USART3_RX_STA|=0x4000;
-//				else
-//				{
-//					USART3_RX_BUF[USART3_RX_STA&0X3FFF]=Res3 ;
-//					USART3_RX_STA++;
-//					if(USART3_RX_STA>(USART_REC_LEN-1))USART3_RX_STA=0;//接收数据错误,重新开始接收	  
-//				}		 
-//			}
-//		}   		 
+		if((USART3_RX_STA&0x8000)==0)//接收未完成
+		{
+			if(USART3_RX_STA&0x4000)//接收到了0x0d
+			{
+				if(Res3!=0x0a)USART3_RX_STA=0;//接收错误,重新开始
+				else USART3_RX_STA|=0x8000;	//接收完成了 
+			}
+			else //还没收到0X0D
+			{	
+				if(Res3==0x0d)USART3_RX_STA|=0x4000;
+				else
+				{
+					USART3_RX_BUF[USART3_RX_STA&0X3FFF]=Res3 ;
+					USART3_RX_STA++;
+					if(USART3_RX_STA>(USART_REC_LEN-1))USART3_RX_STA=0;//接收数据错误,重新开始接收	  
+				}		 
+			}
+		}   		 
 	}
   
 	HAL_UART_IRQHandler(&huart3);	

@@ -37,9 +37,10 @@
 #include "sdio.h"
 #include "usart.h"
 #include "gpio.h"
+#include "fsmc.h"
 
 /* USER CODE BEGIN Includes */
-
+ #include "lcd.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -82,10 +83,11 @@ int main(void)
   MX_GPIO_Init();
   MX_DMA_Init();
   MX_USART3_UART_Init();
-  MX_SDIO_SD_Init();
+  MX_FSMC_Init();
+
 
   /* USER CODE BEGIN 2 */
-
+  LCD_Init();
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

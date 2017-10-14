@@ -42,7 +42,7 @@
 #include "stm32f4xx_hal.h"
 
 /* USER CODE BEGIN Includes */
-
+#include "sys.h"
 /* USER CODE END Includes */
 
 extern SD_HandleTypeDef hsd;
@@ -54,7 +54,7 @@ extern HAL_SD_CardInfoTypedef SDCardInfo;
 
 extern void Error_Handler(void);
 
-void MX_SDIO_SD_Init(void);
+u8 MX_SDIO_SD_Init(void);
 
 /* USER CODE BEGIN Prototypes */
 
