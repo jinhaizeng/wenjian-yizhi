@@ -41,6 +41,7 @@
 
 /* USER CODE BEGIN Includes */
  #include "lcd.h"
+ #include "key.h"
 /* USER CODE END Includes */
 
 /* Private variables ---------------------------------------------------------*/
@@ -87,7 +88,9 @@ int main(void)
 
 
   /* USER CODE BEGIN 2 */
+  KEY_Init();
   LCD_Init();
+  
   /* USER CODE END 2 */
 
   /* Call init function for freertos objects (in freertos.c) */

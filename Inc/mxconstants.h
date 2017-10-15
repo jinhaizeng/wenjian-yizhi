@@ -41,12 +41,20 @@
 
 /* Private define ------------------------------------------------------------*/
 
+#define KEY2_Pin GPIO_PIN_2
+#define KEY2_GPIO_Port GPIOE
+#define KEY1_Pin GPIO_PIN_3
+#define KEY1_GPIO_Port GPIOE
+#define KEY0_Pin GPIO_PIN_4
+#define KEY0_GPIO_Port GPIOE
 #define LED0_Pin GPIO_PIN_9
 #define LED0_GPIO_Port GPIOF
 #define LED1_Pin GPIO_PIN_10
 #define LED1_GPIO_Port GPIOF
 #define LCD_BL_Pin GPIO_PIN_15
 #define LCD_BL_GPIO_Port GPIOB
+#define WK_UP_Pin GPIO_PIN_0
+#define WK_UP_GPIO_Port GPIOA
 /* USER CODE BEGIN Private defines */
 
 /* USER CODE END Private defines */

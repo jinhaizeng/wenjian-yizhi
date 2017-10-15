@@ -602,6 +602,11 @@
               <FileType>1</FileType>
               <FilePath>../Src/sdio.c</FilePath>
             </File>
+            <File>
+              <FileName>key.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\Src\key.c</FilePath>
+            </File>
           </Files>
         </Group>
         <Group>
@@ -639,6 +644,11 @@
               <FileName>sd.c</FileName>
               <FileType>1</FileType>
               <FilePath>..\HADEWARE\sd.c</FilePath>
+            </File>
+            <File>
+              <FileName>sram.c</FileName>
+              <FileType>1</FileType>
+              <FilePath>..\HADEWARE\sram.c</FilePath>
             </File>
           </Files>
         </Group>

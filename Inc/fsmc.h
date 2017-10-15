@@ -46,6 +46,7 @@
 /* USER CODE END Includes */
 
 extern SRAM_HandleTypeDef hsram1;
+extern SRAM_HandleTypeDef hsram2;
 extern void Error_Handler(void);
 
 /* USER CODE BEGIN Private defines */

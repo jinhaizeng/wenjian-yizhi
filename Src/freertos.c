@@ -43,7 +43,13 @@
 #include "usart.h"
 #include "lcd.h"
 #include "sdio.h"
+#include "key.h"
+#include "sram.h"
+#include "sdio.h"
 /* USER CODE END Includes */
+
+/************************************************************/
+u32 testsram[250000] __attribute__((at(0X68000000)));//测试用数组
 
 /* Variables -----------------------------------------------------------------*/
 osThreadId defaultTaskHandle;
@@ -52,6 +58,8 @@ osThreadId Task_LEDHandle;
 /* USER CODE BEGIN Variables */
 osThreadId Task_usartHandle;
 osThreadId Task_WIFIHandle;
+osThreadId Task_SRAMHandle;
+//osThreadId Task_TESTHandle;
 /* USER CODE END Variables */
 //通过串口打印SD卡相关信息
 void show_sdcard_info(void)
@@ -77,6 +85,8 @@ void MX_FREERTOS_Init(void); /* (MISRA C 2004 rule 8.1) */
 /* USER CODE BEGIN FunctionPrototypes */
 void Func_usart(void const * argument);
 void Func_WIFI(void const * argument);
+void Func_SRAM(void const * argument);
+//void Func_TEST(void const * argument);
 /* USER CODE END FunctionPrototypes */
 
 /* Hook prototypes */
@@ -112,9 +122,16 @@ void MX_FREERTOS_Init(void) {
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
   osThreadDef(Task_usart, Func_usart, osPriorityNormal, 0, 128);
-  Task_LEDHandle = osThreadCreate(osThread(Task_usart), NULL);
+  Task_usartHandle = osThreadCreate(osThread(Task_usart), NULL);
+  
   osThreadDef(Task_WIFI, Func_WIFI, osPriorityNormal, 0, 128);
-  Task_LEDHandle = osThreadCreate(osThread(Task_WIFI), NULL);
+  Task_WIFIHandle = osThreadCreate(osThread(Task_WIFI), NULL);
+  
+  osThreadDef(Task_SRAM, Func_SRAM, osPriorityNormal, 0, 128);
+  Task_SRAMHandle = osThreadCreate(osThread(Task_SRAM), NULL);
+  
+//  osThreadDef(Task_TEST, Func_TEST, osPriorityNormal, 0, 128);
+//  Task_TESTHandle = osThreadCreate(osThread(Task_TEST), NULL);
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_QUEUES */
@@ -159,6 +176,7 @@ void Func_usart(void const * argument)
   
 	u8 len;
   POINT_COLOR=RED;//设置字体为红色 
+  
 	LCD_ShowString(30,50,200,16,16,"Aopllo STM32F4/F7");	
 	LCD_ShowString(30,70,200,16,16,"SD CARD TEST");	
 	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
@@ -191,16 +209,16 @@ void Func_WIFI(void const * argument)
   /* Infinite loop */
   for(;;)
   {
-    if(!MX_SDIO_SD_Init())
-    {
-      show_sdcard_info();	//打印SD卡相关信息
-      POINT_COLOR=BLUE;	//设置字体为蓝色 
-      //检测SD卡成功 											    
-      LCD_ShowString(30,150,200,16,16,"SD Card OK    ");
-      LCD_ShowString(30,170,200,16,16,"SD Card Size:     MB");
-      LCD_ShowNum(30+13*8,170,SDCardInfo.CardCapacity>>20,5,16);//显示SD卡容量	
-      
-    }
+//    if(!MX_SDIO_SD_Init())
+//    {
+//      //show_sdcard_info();	//打印SD卡相关信息
+//      POINT_COLOR=BLUE;	//设置字体为蓝色 
+//      //检测SD卡成功 											    
+//      LCD_ShowString(30,150,200,16,16,"SD Card OK    ");
+//      LCD_ShowString(30,170,200,16,16,"SD Card Size:     MB");
+//      LCD_ShowNum(30+13*8,170,SDCardInfo.CardCapacity>>20,5,16);//显示SD卡容量	
+//      
+//    }
     if(USART3_RX_STA&0x8000)
 		{					   
 			length=USART3_RX_STA&0x3fff;//得到此次接收到的数据长度
@@ -215,6 +233,32 @@ void Func_WIFI(void const * argument)
     
   }
 }
+void Func_SRAM(void const * argument)
+{
+  u32 ts=0;
+  u8 key;
+//  for(ts=0;ts<2500;ts++)
+//  {
+//     testsram[ts]=ts;//预存测试数据     
+//  } 
+  
+  for(;;)
+  {
+    
+    key=KEY_Scan(0);//不支持连按	
+    
+    if(key==KEY0_PRES)fsmc_sram_test(60,170);//测试SRAM容量
+		else if(key==KEY1_PRES)//打印预存测试数据
+		{
+			for(ts=0;ts<250000;ts++)LCD_ShowxNum(60,190,testsram[ts],8,16,0);//显示测试数据	 
+		}
+    
+    osDelay(10);   
+   
+  }
+}
+
+
 /* USER CODE END Application */
 
 /************************ (C) COPYRIGHT STMicroelectronics *****END OF FILE****/
