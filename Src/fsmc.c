@@ -43,7 +43,6 @@
 SRAM_HandleTypeDef hsram1;
 SRAM_HandleTypeDef hsram2;
 
-/* FSMC initialization function */
 void MX_FSMC_Init(void)
 {
   FSMC_NORSRAM_TimingTypeDef Timing;
@@ -89,7 +88,7 @@ void MX_FSMC_Init(void)
   {
     Error_Handler();
   }
-  
+
   /** Perform the SRAM2 memory initialization sequence
   */
   hsram2.Instance = FSMC_NORSRAM_DEVICE;
@@ -110,23 +109,16 @@ void MX_FSMC_Init(void)
   hsram2.Init.WriteBurst = FSMC_WRITE_BURST_DISABLE;
   hsram2.Init.PageSize = FSMC_PAGE_SIZE_NONE;
   /* Timing */
-  Timing.AddressSetupTime = 15;
+  Timing.AddressSetupTime = 0;
   Timing.AddressHoldTime = 15;
-  Timing.DataSetupTime = 46;
-  Timing.BusTurnAroundDuration = 1;
+  Timing.DataSetupTime = 8;
+  Timing.BusTurnAroundDuration = 0;
   Timing.CLKDivision = 16;
   Timing.DataLatency = 17;
   Timing.AccessMode = FSMC_ACCESS_MODE_A;
   /* ExtTiming */
-  ExtTiming.AddressSetupTime = 15;
-  ExtTiming.AddressHoldTime = 15;
-  ExtTiming.DataSetupTime = 15;
-  ExtTiming.BusTurnAroundDuration = 1;
-  ExtTiming.CLKDivision = 16;
-  ExtTiming.DataLatency = 17;
-  ExtTiming.AccessMode = FSMC_ACCESS_MODE_A;
 
-  if (HAL_SRAM_Init(&hsram2, &Timing, &ExtTiming) != HAL_OK)
+  if (HAL_SRAM_Init(&hsram2, &Timing, NULL) != HAL_OK)
   {
     Error_Handler();
   }
@@ -187,6 +179,8 @@ static void HAL_FSMC_MspInit(void){
   PD5   ------> FSMC_NWE
   PG10   ------> FSMC_NE3
   PG12   ------> FSMC_NE4
+  PE0   ------> FSMC_NBL0
+  PE1   ------> FSMC_NBL1
   */
   /* GPIO_InitStruct */
   GPIO_InitStruct.Pin = GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3 
@@ -212,7 +206,7 @@ static void HAL_FSMC_MspInit(void){
   /* GPIO_InitStruct */
   GPIO_InitStruct.Pin = GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10 
                           |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14 
-                          |GPIO_PIN_15;
+                          |GPIO_PIN_15|GPIO_PIN_0|GPIO_PIN_1;
   GPIO_InitStruct.Mode = GPIO_MODE_AF_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_VERY_HIGH;
@@ -299,6 +293,8 @@ static void HAL_FSMC_MspDeInit(void){
   PD5   ------> FSMC_NWE
   PG10   ------> FSMC_NE3
   PG12   ------> FSMC_NE4
+  PE0   ------> FSMC_NBL0
+  PE1   ------> FSMC_NBL1
   */
 
   HAL_GPIO_DeInit(GPIOF, GPIO_PIN_0|GPIO_PIN_1|GPIO_PIN_2|GPIO_PIN_3 
@@ -310,7 +306,7 @@ static void HAL_FSMC_MspDeInit(void){
 
   HAL_GPIO_DeInit(GPIOE, GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10 
                           |GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14 
-                          |GPIO_PIN_15);
+                          |GPIO_PIN_15|GPIO_PIN_0|GPIO_PIN_1);
 
   HAL_GPIO_DeInit(GPIOD, GPIO_PIN_8|GPIO_PIN_9|GPIO_PIN_10|GPIO_PIN_11 
                           |GPIO_PIN_12|GPIO_PIN_13|GPIO_PIN_14|GPIO_PIN_15 

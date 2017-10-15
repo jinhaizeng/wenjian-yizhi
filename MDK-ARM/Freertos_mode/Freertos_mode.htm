@@ -3,7 +3,7 @@
 <title>Static Call Graph - [Freertos_mode\Freertos_mode.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image Freertos_mode\Freertos_mode.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Sun Oct 15 16:52:56 2017
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5060183: Last Updated: Sun Oct 15 18:20:39 2017
 <BR><P>
 <H3>Maximum Stack Usage =        280 bytes + Unknown(Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -575,7 +575,7 @@ Global Symbols
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> freertos.o(.constdata)
 </UL>
-<P><STRONG><a name="[66]"></a>Func_SRAM</STRONG> (Thumb, 72 bytes, Stack size 16 bytes, freertos.o(i.Func_SRAM))
+<P><STRONG><a name="[66]"></a>Func_SRAM</STRONG> (Thumb, 92 bytes, Stack size 16 bytes, freertos.o(i.Func_SRAM))
 <BR><BR>[Stack]<UL><LI>Max Depth = 208<LI>Call Chain = Func_SRAM &rArr; fsmc_sram_test &rArr; LCD_ShowxNum &rArr; LCD_ShowChar &rArr; LCD_Fast_DrawPoint &rArr; LCD_WR_REG
 </UL>
 <BR>[Calls]<UL><LI><a href="#[79]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;osDelay
@@ -1124,7 +1124,7 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[5b]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[c8]"></a>MX_FSMC_Init</STRONG> (Thumb, 216 bytes, Stack size 96 bytes, fsmc.o(i.MX_FSMC_Init))
+<P><STRONG><a name="[c8]"></a>MX_FSMC_Init</STRONG> (Thumb, 194 bytes, Stack size 96 bytes, fsmc.o(i.MX_FSMC_Init))
 <BR><BR>[Stack]<UL><LI>Max Depth = 200<LI>Call Chain = MX_FSMC_Init &rArr; HAL_SRAM_Init &rArr; HAL_SRAM_MspInit &rArr; HAL_FSMC_MspInit &rArr; HAL_GPIO_Init
 </UL>
 <BR>[Calls]<UL><LI><a href="#[94]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;HAL_SRAM_Init

@@ -237,10 +237,10 @@ void Func_SRAM(void const * argument)
 {
   u32 ts=0;
   u8 key;
-//  for(ts=0;ts<2500;ts++)
-//  {
-//     testsram[ts]=ts;//Ô¤´æ²âÊÔÊý¾Ý     
-//  } 
+  for(ts=0;ts<2500;ts++)
+  {
+     testsram[ts]=ts;//Ô¤´æ²âÊÔÊý¾Ý     
+  } 
   
   for(;;)
   {
@@ -250,7 +250,7 @@ void Func_SRAM(void const * argument)
     if(key==KEY0_PRES)fsmc_sram_test(60,170);//²âÊÔSRAMÈÝÁ¿
 		else if(key==KEY1_PRES)//´òÓ¡Ô¤´æ²âÊÔÊý¾Ý
 		{
-			for(ts=0;ts<250000;ts++)LCD_ShowxNum(60,190,testsram[ts],8,16,0);//ÏÔÊ¾²âÊÔÊý¾Ý	 
+			for(ts=0;ts<250000;ts++)LCD_ShowxNum(60,190,testsram[ts],6,16,0);//ÏÔÊ¾²âÊÔÊý¾Ý	 
 		}
     
     osDelay(10);   
