@@ -46,10 +46,12 @@
 #include "key.h"
 #include "sram.h"
 #include "sdio.h"
+#include "malloc.h"
+#include "SD_TEST.h"
 /* USER CODE END Includes */
 
 /************************************************************/
-u32 testsram[250000] __attribute__((at(0X68000000)));//测试用数组
+
 
 /* Variables -----------------------------------------------------------------*/
 osThreadId defaultTaskHandle;
@@ -62,20 +64,7 @@ osThreadId Task_SRAMHandle;
 //osThreadId Task_TESTHandle;
 /* USER CODE END Variables */
 //通过串口打印SD卡相关信息
-void show_sdcard_info(void)
-{
-	switch(SDCardInfo.CardType)
-	{
-		case STD_CAPACITY_SD_CARD_V1_1:printf("Card Type:SDSC V1.1\r\n");break;
-		case STD_CAPACITY_SD_CARD_V2_0:printf("Card Type:SDSC V2.0\r\n");break;
-		case HIGH_CAPACITY_SD_CARD:printf("Card Type:SDHC V2.0\r\n");break;
-		case MULTIMEDIA_CARD:printf("Card Type:MMC Card\r\n");break;
-	}	
-  	printf("Card ManufacturerID:%d\r\n",SDCardInfo.SD_cid.ManufacturerID);	//制造商ID
- 	printf("Card RCA:%d\r\n",SDCardInfo.RCA);								//卡相对地址
-	printf("Card Capacity:%d MB\r\n",(u32)(SDCardInfo.CardCapacity>>20));	//显示容量
- 	printf("Card BlockSize:%d\r\n\r\n",SDCardInfo.CardBlockSize);			//显示块大小
-}
+
 /* Function prototypes -------------------------------------------------------*/
 void StartDefaultTask(void const * argument);
 void Func_LED(void const * argument);
@@ -175,13 +164,13 @@ void Func_usart(void const * argument)
   /* USER CODE BEGIN Func_LED */
   
 	u8 len;
-  POINT_COLOR=RED;//设置字体为红色 
-  
-	LCD_ShowString(30,50,200,16,16,"Aopllo STM32F4/F7");	
-	LCD_ShowString(30,70,200,16,16,"SD CARD TEST");	
-	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
-	LCD_ShowString(30,110,200,16,16,"2017/10/15");   
-	LCD_ShowString(30,130,200,16,16,"KEY0:Read Sector 0");
+//  POINT_COLOR=RED;//设置字体为红色 
+//  
+//	LCD_ShowString(30,50,200,16,16,"Aopllo STM32F4/F7");	
+//	LCD_ShowString(30,70,200,16,16,"SD CARD TEST");	
+//	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
+//	LCD_ShowString(30,110,200,16,16,"2017/10/15");   
+//	LCD_ShowString(30,130,200,16,16,"KEY0:Read Sector 0");
   /* Infinite loop */
   for(;;)
   {
@@ -235,23 +224,51 @@ void Func_WIFI(void const * argument)
 }
 void Func_SRAM(void const * argument)
 {
-  u32 ts=0;
   u8 key;
-  for(ts=0;ts<2500;ts++)
-  {
-     testsram[ts]=ts;//预存测试数据     
-  } 
+  u32 sd_size;
+  u8 t=0;	
+	u8 *buf;
+  my_mem_init(SRAMIN);            //初始化内部内存池
+  my_mem_init(SRAMEX);            //初始化外部SDRAM内存池
+  POINT_COLOR=RED;//设置字体为红色 
+	LCD_ShowString(30,50,200,16,16,"Aopllo STM32F4/F7");	
+	LCD_ShowString(30,70,200,16,16,"SD CARD TEST");	
+	LCD_ShowString(30,90,200,16,16,"ATOM@ALIENTEK");
+	LCD_ShowString(30,110,200,16,16,"2016/1/16");   
+	LCD_ShowString(30,130,200,16,16,"KEY0:Read Sector 0");
   
+    while(MX_SDIO_SD_Init())
+    {
+      LCD_ShowString(30,150,200,16,16,"SD Card Error!");
+      osDelay(2000);
+     }
+  show_sdcard_info();	//打印SD卡相关信息
+  POINT_COLOR=BLUE;	//设置字体为蓝色 
+    //检测SD卡成功 											    
+  LCD_ShowString(30,150,200,16,16,"SD Card OK    ");
+  LCD_ShowString(30,170,200,16,16,"SD Card Size:     MB");
+  LCD_ShowNum(30+13*8,170,SDCardInfo.CardCapacity>>20,5,16);//显示SD卡容量	
   for(;;)
   {
-    
-    key=KEY_Scan(0);//不支持连按	
-    
-    if(key==KEY0_PRES)fsmc_sram_test(60,170);//测试SRAM容量
-		else if(key==KEY1_PRES)//打印预存测试数据
+      
+    key=KEY_Scan(0);
+		if(key==KEY0_PRES)//KEY0按下了
 		{
-			for(ts=0;ts<250000;ts++)LCD_ShowxNum(60,190,testsram[ts],6,16,0);//显示测试数据	 
-		}
+      
+			buf=mymalloc(0,512);		//申请内存
+			if(SD_ReadDisk(buf,0,1)==0)	//读取0扇区的内容
+			{	
+        
+				LCD_ShowString(30,190,200,16,16,"USART1 Sending Data...");
+				printf("SECTOR 0 DATA:\r\n");
+				for(sd_size=0;sd_size<512;sd_size++)printf("%x ",buf[sd_size]);//打印0扇区数据    	   
+				printf("\r\nDATA ENDED\r\n");
+				LCD_ShowString(30,190,200,16,16,"USART1 Send Data Over!");
+			}
+			myfree(0,buf);//释放内存	
+      
+     
+    }
     
     osDelay(10);   
    

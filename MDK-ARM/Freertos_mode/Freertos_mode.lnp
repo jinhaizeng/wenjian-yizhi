@@ -47,6 +47,8 @@
 "freertos_mode\lcd.o"
 "freertos_mode\sd.o"
 "freertos_mode\sram.o"
+"freertos_mode\sd_test.o"
+"freertos_mode\malloc.o"
 --library_type=microlib --strict --scatter "Freertos_mode\Freertos_mode.sct"
 --diag_suppress=L6329 --summary_stderr --info summarysizes --map --xref --callgraph --symbols
 --info sizes --info totals --info unused --info veneers

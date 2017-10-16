@@ -61,3 +61,9 @@ freertos_mode\freertos.o: ../Inc/key.h
 freertos_mode\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
 freertos_mode\freertos.o: ../Drivers/CMSIS/Include/core_cmFunc.h
 freertos_mode\freertos.o: ..\HADEWARE\sram.h
+freertos_mode\freertos.o: ..\MALLOC\malloc.h
+freertos_mode\freertos.o: ..\HADEWARE\SD_TEST.h
+freertos_mode\freertos.o: ..\HADEWARE\sd.h
+freertos_mode\freertos.o: ../Middlewares/Third_Party/FreeRTOS/Source/CMSIS_RTOS/cmsis_os.h
+freertos_mode\freertos.o: ../Drivers/CMSIS/Include/core_cmFunc.h
+freertos_mode\freertos.o: D:\MDK5.12\ARM\ARMCC\Bin\..\include\string.h

@@ -31,6 +31,7 @@ u8 SD_ReadBlocks_DMA(uint32_t *buf,uint64_t sector,uint32_t blocksize,uint32_t c
     u8 err=0;
     
     err=HAL_SD_ReadBlocks_DMA(&hsd,buf,sector,blocksize,cnt);//通过DMA读取SD卡一个扇区
+    printf("check_point2");
     if(err==0)//读取成功
     {
         //等待读取完成
@@ -80,9 +81,11 @@ u8 SD_ReadDisk(u8* buf,u32 sector,u8 cnt)
             buf+=512;
         }
     }else
-    {
+    {   
+        printf("check_point1");
         sta=SD_ReadBlocks_DMA((uint32_t*)buf,lsector, 512,cnt);
     }
+    
     return sta;
 }  
 
