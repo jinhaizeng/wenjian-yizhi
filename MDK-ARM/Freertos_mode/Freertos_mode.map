@@ -879,6 +879,34 @@ Section Cross References
     key.o(i.KEY_Scan) refers to stm32f4xx_hal_gpio.o(i.HAL_GPIO_ReadPin) for HAL_GPIO_ReadPin
     key.o(i.KEY_Scan) refers to cmsis_os.o(i.osDelay) for osDelay
     key.o(i.KEY_Scan) refers to key.o(.data) for .data
+    bsp_driver_sd.o(i.BSP_SD_DMA_Rx_IRQHandler) refers to stm32f4xx_hal_dma.o(i.HAL_DMA_IRQHandler) for HAL_DMA_IRQHandler
+    bsp_driver_sd.o(i.BSP_SD_DMA_Rx_IRQHandler) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_DMA_Tx_IRQHandler) refers to stm32f4xx_hal_dma.o(i.HAL_DMA_IRQHandler) for HAL_DMA_IRQHandler
+    bsp_driver_sd.o(i.BSP_SD_DMA_Tx_IRQHandler) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_Erase) refers to stm32f4xx_hal_sd.o(i.HAL_SD_Erase) for HAL_SD_Erase
+    bsp_driver_sd.o(i.BSP_SD_Erase) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_GetCardInfo) refers to stm32f4xx_hal_sd.o(i.HAL_SD_Get_CardInfo) for HAL_SD_Get_CardInfo
+    bsp_driver_sd.o(i.BSP_SD_GetCardInfo) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_GetStatus) refers to stm32f4xx_hal_sd.o(i.HAL_SD_GetStatus) for HAL_SD_GetStatus
+    bsp_driver_sd.o(i.BSP_SD_GetStatus) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_IRQHandler) refers to stm32f4xx_hal_sd.o(i.HAL_SD_IRQHandler) for HAL_SD_IRQHandler
+    bsp_driver_sd.o(i.BSP_SD_IRQHandler) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_Init) refers to stm32f4xx_hal_sd.o(i.HAL_SD_Init) for HAL_SD_Init
+    bsp_driver_sd.o(i.BSP_SD_Init) refers to stm32f4xx_hal_sd.o(i.HAL_SD_WideBusOperation_Config) for HAL_SD_WideBusOperation_Config
+    bsp_driver_sd.o(i.BSP_SD_Init) refers to sdio.o(.bss) for SDCardInfo
+    bsp_driver_sd.o(i.BSP_SD_ReadBlocks) refers to stm32f4xx_hal_sd.o(i.HAL_SD_ReadBlocks) for HAL_SD_ReadBlocks
+    bsp_driver_sd.o(i.BSP_SD_ReadBlocks) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_ReadBlocks_DMA) refers to stm32f4xx_hal_sd.o(i.HAL_SD_ReadBlocks_DMA) for HAL_SD_ReadBlocks_DMA
+    bsp_driver_sd.o(i.BSP_SD_ReadBlocks_DMA) refers to stm32f4xx_hal_sd.o(i.HAL_SD_CheckReadOperation) for HAL_SD_CheckReadOperation
+    bsp_driver_sd.o(i.BSP_SD_ReadBlocks_DMA) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_WriteBlocks) refers to stm32f4xx_hal_sd.o(i.HAL_SD_WriteBlocks) for HAL_SD_WriteBlocks
+    bsp_driver_sd.o(i.BSP_SD_WriteBlocks) refers to sdio.o(.bss) for hsd
+    bsp_driver_sd.o(i.BSP_SD_WriteBlocks_DMA) refers to stm32f4xx_hal_sd.o(i.HAL_SD_WriteBlocks_DMA) for HAL_SD_WriteBlocks_DMA
+    bsp_driver_sd.o(i.BSP_SD_WriteBlocks_DMA) refers to stm32f4xx_hal_sd.o(i.HAL_SD_CheckWriteOperation) for HAL_SD_CheckWriteOperation
+    bsp_driver_sd.o(i.BSP_SD_WriteBlocks_DMA) refers to sdio.o(.bss) for hsd
+    fatfs.o(i.MX_FATFS_Init) refers to ff_gen_drv.o(i.FATFS_LinkDriver) for FATFS_LinkDriver
+    fatfs.o(i.MX_FATFS_Init) refers to fatfs.o(.data) for .data
+    fatfs.o(i.MX_FATFS_Init) refers to sd_diskio.o(.constdata) for SD_Driver
     delay.o(i.delay_init) refers to stm32f4xx_hal_cortex.o(i.HAL_SYSTICK_CLKSourceConfig) for HAL_SYSTICK_CLKSourceConfig
     delay.o(i.delay_init) refers to delay.o(.data) for .data
     delay.o(i.delay_ms) refers to delay.o(i.delay_us) for delay_us
@@ -1028,6 +1056,293 @@ Section Cross References
     malloc.o(.data) refers to malloc.o(.bss) for mem1mapbase
     malloc.o(.data) refers to malloc.o(.ARM.__AT_0x680F0000) for mem2mapbase
     malloc.o(.data) refers to malloc.o(.ARM.__AT_0x1000F000) for mem3mapbase
+    sd_diskio.o(i.SD_initialize) refers to bsp_driver_sd.o(i.BSP_SD_Init) for BSP_SD_Init
+    sd_diskio.o(i.SD_initialize) refers to sd_diskio.o(.data) for .data
+    sd_diskio.o(i.SD_ioctl) refers to bsp_driver_sd.o(i.BSP_SD_GetCardInfo) for BSP_SD_GetCardInfo
+    sd_diskio.o(i.SD_ioctl) refers to sd_diskio.o(.data) for .data
+    sd_diskio.o(i.SD_read) refers to bsp_driver_sd.o(i.BSP_SD_ReadBlocks) for BSP_SD_ReadBlocks
+    sd_diskio.o(i.SD_status) refers to bsp_driver_sd.o(i.BSP_SD_GetStatus) for BSP_SD_GetStatus
+    sd_diskio.o(i.SD_status) refers to sd_diskio.o(.data) for .data
+    sd_diskio.o(i.SD_write) refers to bsp_driver_sd.o(i.BSP_SD_WriteBlocks) for BSP_SD_WriteBlocks
+    sd_diskio.o(.constdata) refers to sd_diskio.o(i.SD_initialize) for SD_initialize
+    sd_diskio.o(.constdata) refers to sd_diskio.o(i.SD_status) for SD_status
+    sd_diskio.o(.constdata) refers to sd_diskio.o(i.SD_read) for SD_read
+    sd_diskio.o(.constdata) refers to sd_diskio.o(i.SD_write) for SD_write
+    sd_diskio.o(.constdata) refers to sd_diskio.o(i.SD_ioctl) for SD_ioctl
+    diskio.o(i.disk_initialize) refers to ff_gen_drv.o(.bss) for disk
+    diskio.o(i.disk_ioctl) refers to ff_gen_drv.o(.bss) for disk
+    diskio.o(i.disk_read) refers to ff_gen_drv.o(.bss) for disk
+    diskio.o(i.disk_status) refers to ff_gen_drv.o(.bss) for disk
+    diskio.o(i.disk_write) refers to ff_gen_drv.o(.bss) for disk
+    ff.o(i.check_fs) refers to ff.o(i.move_window) for move_window
+    ff.o(i.chk_lock) refers to ff.o(.bss) for .bss
+    ff.o(i.clear_lock) refers to ff.o(.bss) for .bss
+    ff.o(i.create_chain) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.create_chain) refers to ff.o(i.put_fat) for put_fat
+    ff.o(i.create_name) refers to cc936.o(i.ff_convert) for ff_convert
+    ff.o(i.create_name) refers to ff.o(i.chk_chr) for chk_chr
+    ff.o(i.create_name) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.create_name) refers to cc936.o(i.ff_wtoupper) for ff_wtoupper
+    ff.o(i.dec_lock) refers to ff.o(.bss) for .bss
+    ff.o(i.dir_alloc) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_alloc) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_alloc) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_find) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_find) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_find) refers to cc936.o(i.ff_wtoupper) for ff_wtoupper
+    ff.o(i.dir_find) refers to ff.o(i.sum_sfn) for sum_sfn
+    ff.o(i.dir_find) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_find) refers to ff.o(.constdata) for .constdata
+    ff.o(i.dir_next) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.dir_next) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.dir_next) refers to ff.o(i.sync_window) for sync_window
+    ff.o(i.dir_next) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.dir_next) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.dir_read) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_read) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_read) refers to ff.o(i.sum_sfn) for sum_sfn
+    ff.o(i.dir_read) refers to ff.o(.constdata) for .constdata
+    ff.o(i.dir_register) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.dir_register) refers to ff.o(i.gen_numname) for gen_numname
+    ff.o(i.dir_register) refers to ff.o(i.dir_find) for dir_find
+    ff.o(i.dir_register) refers to ff.o(i.dir_alloc) for dir_alloc
+    ff.o(i.dir_register) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_register) refers to ff.o(i.sum_sfn) for sum_sfn
+    ff.o(i.dir_register) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_register) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_register) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.dir_register) refers to ff.o(.constdata) for .constdata
+    ff.o(i.dir_remove) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.dir_remove) refers to ff.o(i.move_window) for move_window
+    ff.o(i.dir_remove) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.dir_remove) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.dir_sdi) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.dir_sdi) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_chmod) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_chmod) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_chmod) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_chmod) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_chmod) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_chmod) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_close) refers to ff.o(i.f_sync) for f_sync
+    ff.o(i.f_close) refers to ff.o(i.validate) for validate
+    ff.o(i.f_close) refers to ff.o(i.dec_lock) for dec_lock
+    ff.o(i.f_close) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_closedir) refers to ff.o(i.validate) for validate
+    ff.o(i.f_closedir) refers to ff.o(i.dec_lock) for dec_lock
+    ff.o(i.f_closedir) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_getfree) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_getfree) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_getfree) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_getfree) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_getlabel) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_getlabel) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_getlabel) refers to ff.o(i.dir_read) for dir_read
+    ff.o(i.f_getlabel) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_getlabel) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_getlabel) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_gets) refers to ff.o(i.f_read) for f_read
+    ff.o(i.f_lseek) refers to ff.o(i.validate) for validate
+    ff.o(i.f_lseek) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_lseek) refers to ff.o(i.clmt_clust) for clmt_clust
+    ff.o(i.f_lseek) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_lseek) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.f_lseek) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_lseek) refers to diskio.o(i.disk_read) for disk_read
+    ff.o(i.f_lseek) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.f_mkdir) refers to fatfs.o(i.get_fattime) for get_fattime
+    ff.o(i.f_mkdir) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_mkdir) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_mkdir) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_mkdir) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_mkdir) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.f_mkdir) refers to ff.o(i.sync_window) for sync_window
+    ff.o(i.f_mkdir) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_mkdir) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.f_mkdir) refers to ff.o(i.st_clust) for st_clust
+    ff.o(i.f_mkdir) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_mkdir) refers to ff.o(i.dir_register) for dir_register
+    ff.o(i.f_mkdir) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_mkdir) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_mkdir) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_mkfs) refers to ff.o(i.get_ldnumber) for get_ldnumber
+    ff.o(i.f_mkfs) refers to diskio.o(i.disk_initialize) for disk_initialize
+    ff.o(i.f_mkfs) refers to diskio.o(i.disk_ioctl) for disk_ioctl
+    ff.o(i.f_mkfs) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.f_mkfs) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.f_mkfs) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_mkfs) refers to fatfs.o(i.get_fattime) for get_fattime
+    ff.o(i.f_mkfs) refers to ff.o(.bss) for .bss
+    ff.o(i.f_mkfs) refers to ff.o(.constdata) for .constdata
+    ff.o(i.f_mount) refers to ff.o(i.get_ldnumber) for get_ldnumber
+    ff.o(i.f_mount) refers to ff.o(i.clear_lock) for clear_lock
+    ff.o(i.f_mount) refers to syscall.o(i.ff_del_syncobj) for ff_del_syncobj
+    ff.o(i.f_mount) refers to syscall.o(i.ff_cre_syncobj) for ff_cre_syncobj
+    ff.o(i.f_mount) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_mount) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_mount) refers to ff.o(.bss) for .bss
+    ff.o(i.f_open) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_open) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_open) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_open) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_open) refers to ff.o(i.chk_lock) for chk_lock
+    ff.o(i.f_open) refers to ff.o(i.dir_register) for dir_register
+    ff.o(i.f_open) refers to fatfs.o(i.get_fattime) for get_fattime
+    ff.o(i.f_open) refers to ff.o(i.ld_clust) for ld_clust
+    ff.o(i.f_open) refers to ff.o(i.st_clust) for st_clust
+    ff.o(i.f_open) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_open) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_open) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_open) refers to ff.o(i.inc_lock) for inc_lock
+    ff.o(i.f_open) refers to ff.o(.bss) for .bss
+    ff.o(i.f_opendir) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_opendir) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_opendir) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_opendir) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_opendir) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_opendir) refers to ff.o(i.ld_clust) for ld_clust
+    ff.o(i.f_opendir) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_opendir) refers to ff.o(i.inc_lock) for inc_lock
+    ff.o(i.f_printf) refers to ff.o(i.putc_bfd) for putc_bfd
+    ff.o(i.f_printf) refers to ff.o(i.f_write) for f_write
+    ff.o(i.f_putc) refers to ff.o(i.putc_bfd) for putc_bfd
+    ff.o(i.f_putc) refers to ff.o(i.f_write) for f_write
+    ff.o(i.f_puts) refers to ff.o(i.putc_bfd) for putc_bfd
+    ff.o(i.f_puts) refers to ff.o(i.f_write) for f_write
+    ff.o(i.f_read) refers to ff.o(i.validate) for validate
+    ff.o(i.f_read) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_read) refers to ff.o(i.clmt_clust) for clmt_clust
+    ff.o(i.f_read) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_read) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_read) refers to diskio.o(i.disk_read) for disk_read
+    ff.o(i.f_read) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_read) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.f_readdir) refers to ff.o(i.validate) for validate
+    ff.o(i.f_readdir) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_readdir) refers to ff.o(i.dir_read) for dir_read
+    ff.o(i.f_readdir) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_readdir) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_readdir) refers to ff.o(i.get_fileinfo) for get_fileinfo
+    ff.o(i.f_readdir) refers to ff.o(i.dir_next) for dir_next
+    ff.o(i.f_readdir) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_rename) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_rename) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_rename) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_rename) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_rename) refers to ff.o(i.chk_lock) for chk_lock
+    ff.o(i.f_rename) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_rename) refers to ff.o(i.get_ldnumber) for get_ldnumber
+    ff.o(i.f_rename) refers to ff.o(i.dir_register) for dir_register
+    ff.o(i.f_rename) refers to ff.o(i.ld_clust) for ld_clust
+    ff.o(i.f_rename) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_rename) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_rename) refers to ff.o(i.st_clust) for st_clust
+    ff.o(i.f_rename) refers to ff.o(i.dir_remove) for dir_remove
+    ff.o(i.f_rename) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_rename) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_setlabel) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_setlabel) refers to cc936.o(i.ff_convert) for ff_convert
+    ff.o(i.f_setlabel) refers to cc936.o(i.ff_wtoupper) for ff_wtoupper
+    ff.o(i.f_setlabel) refers to ff.o(i.chk_chr) for chk_chr
+    ff.o(i.f_setlabel) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_setlabel) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_setlabel) refers to ff.o(i.dir_read) for dir_read
+    ff.o(i.f_setlabel) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_setlabel) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_setlabel) refers to ff.o(i.dir_alloc) for dir_alloc
+    ff.o(i.f_setlabel) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.f_setlabel) refers to fatfs.o(i.get_fattime) for get_fattime
+    ff.o(i.f_stat) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_stat) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_stat) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_stat) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_stat) refers to ff.o(i.get_fileinfo) for get_fileinfo
+    ff.o(i.f_stat) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_sync) refers to ff.o(i.validate) for validate
+    ff.o(i.f_sync) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.f_sync) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_sync) refers to ff.o(i.move_window) for move_window
+    ff.o(i.f_sync) refers to ff.o(i.st_clust) for st_clust
+    ff.o(i.f_sync) refers to fatfs.o(i.get_fattime) for get_fattime
+    ff.o(i.f_sync) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_truncate) refers to ff.o(i.validate) for validate
+    ff.o(i.f_truncate) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.f_truncate) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_truncate) refers to ff.o(i.put_fat) for put_fat
+    ff.o(i.f_truncate) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_truncate) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.f_unlink) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_unlink) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_unlink) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_unlink) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_unlink) refers to ff.o(i.chk_lock) for chk_lock
+    ff.o(i.f_unlink) refers to ff.o(i.ld_clust) for ld_clust
+    ff.o(i.f_unlink) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_unlink) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.f_unlink) refers to ff.o(i.dir_read) for dir_read
+    ff.o(i.f_unlink) refers to ff.o(i.dir_remove) for dir_remove
+    ff.o(i.f_unlink) refers to ff.o(i.remove_chain) for remove_chain
+    ff.o(i.f_unlink) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_unlink) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_utime) refers to ff.o(i.find_volume) for find_volume
+    ff.o(i.f_utime) refers to syscall.o(i.ff_memalloc) for ff_memalloc
+    ff.o(i.f_utime) refers to ff.o(i.follow_path) for follow_path
+    ff.o(i.f_utime) refers to syscall.o(i.ff_memfree) for ff_memfree
+    ff.o(i.f_utime) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_utime) refers to ff.o(i.sync_fs) for sync_fs
+    ff.o(i.f_write) refers to ff.o(i.validate) for validate
+    ff.o(i.f_write) refers to ff.o(i.unlock_fs) for unlock_fs
+    ff.o(i.f_write) refers to ff.o(i.clmt_clust) for clmt_clust
+    ff.o(i.f_write) refers to ff.o(i.create_chain) for create_chain
+    ff.o(i.f_write) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.f_write) refers to ff.o(i.clust2sect) for clust2sect
+    ff.o(i.f_write) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.f_write) refers to diskio.o(i.disk_read) for disk_read
+    ff.o(i.find_volume) refers to ff.o(i.get_ldnumber) for get_ldnumber
+    ff.o(i.find_volume) refers to ff.o(i.lock_fs) for lock_fs
+    ff.o(i.find_volume) refers to diskio.o(i.disk_status) for disk_status
+    ff.o(i.find_volume) refers to diskio.o(i.disk_initialize) for disk_initialize
+    ff.o(i.find_volume) refers to ff.o(i.check_fs) for check_fs
+    ff.o(i.find_volume) refers to ff.o(i.move_window) for move_window
+    ff.o(i.find_volume) refers to ff.o(i.clear_lock) for clear_lock
+    ff.o(i.find_volume) refers to ff.o(.bss) for .bss
+    ff.o(i.find_volume) refers to ff.o(.data) for .data
+    ff.o(i.follow_path) refers to ff.o(i.dir_sdi) for dir_sdi
+    ff.o(i.follow_path) refers to ff.o(i.create_name) for create_name
+    ff.o(i.follow_path) refers to ff.o(i.dir_find) for dir_find
+    ff.o(i.follow_path) refers to ff.o(i.ld_clust) for ld_clust
+    ff.o(i.gen_numname) refers to ff.o(i.mem_cpy) for mem_cpy
+    ff.o(i.get_fat) refers to ff.o(i.move_window) for move_window
+    ff.o(i.get_fileinfo) refers to cc936.o(i.ff_convert) for ff_convert
+    ff.o(i.inc_lock) refers to ff.o(.bss) for .bss
+    ff.o(i.lock_fs) refers to syscall.o(i.ff_req_grant) for ff_req_grant
+    ff.o(i.move_window) refers to ff.o(i.sync_window) for sync_window
+    ff.o(i.move_window) refers to diskio.o(i.disk_read) for disk_read
+    ff.o(i.put_fat) refers to ff.o(i.move_window) for move_window
+    ff.o(i.putc_bfd) refers to ff.o(i.f_write) for f_write
+    ff.o(i.remove_chain) refers to ff.o(i.get_fat) for get_fat
+    ff.o(i.remove_chain) refers to ff.o(i.put_fat) for put_fat
+    ff.o(i.sync_fs) refers to ff.o(i.sync_window) for sync_window
+    ff.o(i.sync_fs) refers to ff.o(i.mem_set) for mem_set
+    ff.o(i.sync_fs) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.sync_fs) refers to diskio.o(i.disk_ioctl) for disk_ioctl
+    ff.o(i.sync_window) refers to diskio.o(i.disk_write) for disk_write
+    ff.o(i.unlock_fs) refers to syscall.o(i.ff_rel_grant) for ff_rel_grant
+    ff.o(i.validate) refers to diskio.o(i.disk_status) for disk_status
+    ff.o(i.validate) refers to ff.o(i.lock_fs) for lock_fs
+    ff_gen_drv.o(i.FATFS_GetAttachedDriversNbr) refers to ff_gen_drv.o(.bss) for .bss
+    ff_gen_drv.o(i.FATFS_LinkDriver) refers to ff_gen_drv.o(i.FATFS_LinkDriverEx) for FATFS_LinkDriverEx
+    ff_gen_drv.o(i.FATFS_LinkDriverEx) refers to ff_gen_drv.o(.bss) for .bss
+    ff_gen_drv.o(i.FATFS_UnLinkDriver) refers to ff_gen_drv.o(i.FATFS_UnLinkDriverEx) for FATFS_UnLinkDriverEx
+    ff_gen_drv.o(i.FATFS_UnLinkDriverEx) refers to ff_gen_drv.o(.bss) for .bss
+    cc936.o(i.ff_convert) refers to cc936.o(.constdata) for .constdata
+    cc936.o(i.ff_wtoupper) refers to cc936.o(.constdata) for .constdata
+    syscall.o(i.ff_cre_syncobj) refers to cmsis_os.o(i.osSemaphoreCreate) for osSemaphoreCreate
+    syscall.o(i.ff_del_syncobj) refers to cmsis_os.o(i.osSemaphoreDelete) for osSemaphoreDelete
+    syscall.o(i.ff_memalloc) refers to malloc.o(i.malloc) for malloc
+    syscall.o(i.ff_memfree) refers to malloc.o(i.free) for free
+    syscall.o(i.ff_rel_grant) refers to cmsis_os.o(i.osSemaphoreRelease) for osSemaphoreRelease
+    syscall.o(i.ff_req_grant) refers to cmsis_os.o(i.osSemaphoreWait) for osSemaphoreWait
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry10a.o(.ARM.Collect$$$$0000000D) for __rt_final_cpp
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry11a.o(.ARM.Collect$$$$0000000F) for __rt_final_exit
     entry.o(.ARM.Collect$$$$00000000) refers (Special) to entry7b.o(.ARM.Collect$$$$00000008) for _main_clock
@@ -1271,6 +1586,38 @@ Section Cross References
     printfa.o(i._printf_pre_padding) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._snputc) refers (Special) to iusefp.o(.text) for __I$use$fp
     printfa.o(i._sputc) refers (Special) to iusefp.o(.text) for __I$use$fp
+    malloc.o(i.free) refers to mvars.o(.data) for __microlib_freelist
+    malloc.o(i.malloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    malloc.o(i.malloc) refers to mvars.o(.data) for __microlib_freelist
+    malloc.o(i.malloc) refers to startup_stm32f407xx.o(HEAP) for __heap_base
+    mallocr.o(i.__free$realloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocr.o(i.__malloc$realloc) refers to mallocr.o(i.internal_alloc) for internal_alloc
+    mallocr.o(i.__malloc$realloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    mallocr.o(i.__malloc$realloc) refers to startup_stm32f407xx.o(HEAP) for __heap_base
+    mallocr.o(i.__malloc$realloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocr.o(i.internal_alloc) refers to memcpya.o(.text) for __aeabi_memcpy
+    mallocr.o(i.internal_alloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocr.o(i.realloc) refers to mallocr.o(i.__free$realloc) for __free$realloc
+    mallocr.o(i.realloc) refers to mallocr.o(i.internal_alloc) for internal_alloc
+    mallocr.o(i.realloc) refers to mallocr.o(i.__malloc$realloc) for __malloc$realloc
+    mallocr.o(i.realloc) refers to mvars.o(.data) for __microlib_freelist
+    malloca.o(i.__aligned_malloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    malloca.o(i.__aligned_malloc) refers to mvars.o(.data) for __microlib_freelist
+    malloca.o(i.__aligned_malloc) refers to startup_stm32f407xx.o(HEAP) for __heap_base
+    malloca.o(i.__free$memalign) refers to mvars.o(.data) for __microlib_freelist
+    malloca.o(i.__malloc$memalign) refers to malloca.o(i.__aligned_malloc) for __aligned_malloc
+    mallocra.o(i.__aligned_malloc$realloc) refers to mallocra.o(i.internal_alloc) for internal_alloc
+    mallocra.o(i.__aligned_malloc$realloc) refers to mvars.o(.data) for __microlib_freelist_initialised
+    mallocra.o(i.__aligned_malloc$realloc) refers to startup_stm32f407xx.o(HEAP) for __heap_base
+    mallocra.o(i.__aligned_malloc$realloc) refers to mvars.o(.data) for __microlib_freelist
+    mallocra.o(i.__free$realloc$memalign) refers to mvars.o(.data) for __microlib_freelist
+    mallocra.o(i.__malloc$realloc$memalign) refers to mallocra.o(i.__aligned_malloc$realloc) for __aligned_malloc$realloc
+    mallocra.o(i.__realloc$memalign) refers to mallocra.o(i.__free$realloc$memalign) for __free$realloc$memalign
+    mallocra.o(i.__realloc$memalign) refers to mallocra.o(i.internal_alloc) for internal_alloc
+    mallocra.o(i.__realloc$memalign) refers to mallocra.o(i.__malloc$realloc$memalign) for __malloc$realloc$memalign
+    mallocra.o(i.__realloc$memalign) refers to mvars.o(.data) for __microlib_freelist
+    mallocra.o(i.internal_alloc) refers to memcpya.o(.text) for __aeabi_memcpy
+    mallocra.o(i.internal_alloc) refers to mvars.o(.data) for __microlib_freelist
     dmul.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
     dmul.o(.text) refers to depilogue.o(.text) for _double_epilogue
     dfltui.o(.text) refers (Special) to iusefp.o(.text) for __I$use$fp
@@ -1838,6 +2185,30 @@ Removing Unused input sections from the image.
     Removing key.o(.rev16_text), (4 bytes).
     Removing key.o(.revsh_text), (4 bytes).
     Removing key.o(.rrx_text), (6 bytes).
+    Removing bsp_driver_sd.o(.rev16_text), (4 bytes).
+    Removing bsp_driver_sd.o(.revsh_text), (4 bytes).
+    Removing bsp_driver_sd.o(.rrx_text), (6 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_DMA_Rx_IRQHandler), (12 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_DMA_Tx_IRQHandler), (12 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_DetectCallback), (2 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_DetectIT), (2 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_Erase), (28 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_GetCardInfo), (12 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_GetStatus), (12 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_IRQHandler), (12 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_ITConfig), (4 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_Init), (60 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_IsDetected), (14 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_ReadBlocks), (32 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_ReadBlocks_DMA), (52 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_WriteBlocks), (32 bytes).
+    Removing bsp_driver_sd.o(i.BSP_SD_WriteBlocks_DMA), (52 bytes).
+    Removing fatfs.o(.rev16_text), (4 bytes).
+    Removing fatfs.o(.revsh_text), (4 bytes).
+    Removing fatfs.o(.rrx_text), (6 bytes).
+    Removing fatfs.o(i.MX_FATFS_Init), (28 bytes).
+    Removing fatfs.o(i.get_fattime), (4 bytes).
+    Removing fatfs.o(.data), (5 bytes).
     Removing delay.o(.rev16_text), (4 bytes).
     Removing delay.o(.revsh_text), (4 bytes).
     Removing delay.o(.rrx_text), (6 bytes).
@@ -1890,12 +2261,123 @@ Removing Unused input sections from the image.
     Removing malloc.o(.rrx_text), (6 bytes).
     Removing malloc.o(i.mymemcpy), (18 bytes).
     Removing malloc.o(i.myrealloc), (60 bytes).
+    Removing sd_diskio.o(.rev16_text), (4 bytes).
+    Removing sd_diskio.o(.revsh_text), (4 bytes).
+    Removing sd_diskio.o(.rrx_text), (6 bytes).
+    Removing sd_diskio.o(i.SD_initialize), (32 bytes).
+    Removing sd_diskio.o(i.SD_ioctl), (80 bytes).
+    Removing sd_diskio.o(i.SD_read), (30 bytes).
+    Removing sd_diskio.o(i.SD_status), (32 bytes).
+    Removing sd_diskio.o(i.SD_write), (30 bytes).
+    Removing sd_diskio.o(.constdata), (20 bytes).
+    Removing sd_diskio.o(.data), (1 bytes).
+    Removing diskio.o(.rev16_text), (4 bytes).
+    Removing diskio.o(.revsh_text), (4 bytes).
+    Removing diskio.o(.rrx_text), (6 bytes).
+    Removing diskio.o(i.disk_initialize), (40 bytes).
+    Removing diskio.o(i.disk_ioctl), (28 bytes).
+    Removing diskio.o(i.disk_read), (28 bytes).
+    Removing diskio.o(i.disk_status), (24 bytes).
+    Removing diskio.o(i.disk_write), (28 bytes).
+    Removing diskio.o(i.get_fattime), (4 bytes).
+    Removing ff.o(.rev16_text), (4 bytes).
+    Removing ff.o(.revsh_text), (4 bytes).
+    Removing ff.o(.rrx_text), (6 bytes).
+    Removing ff.o(i.check_fs), (96 bytes).
+    Removing ff.o(i.chk_chr), (16 bytes).
+    Removing ff.o(i.chk_lock), (108 bytes).
+    Removing ff.o(i.clear_lock), (36 bytes).
+    Removing ff.o(i.clmt_clust), (42 bytes).
+    Removing ff.o(i.clust2sect), (30 bytes).
+    Removing ff.o(i.create_chain), (176 bytes).
+    Removing ff.o(i.create_name), (580 bytes).
+    Removing ff.o(i.dec_lock), (60 bytes).
+    Removing ff.o(i.dir_alloc), (72 bytes).
+    Removing ff.o(i.dir_find), (324 bytes).
+    Removing ff.o(i.dir_next), (286 bytes).
+    Removing ff.o(i.dir_read), (264 bytes).
+    Removing ff.o(i.dir_register), (404 bytes).
+    Removing ff.o(i.dir_remove), (114 bytes).
+    Removing ff.o(i.dir_sdi), (152 bytes).
+    Removing ff.o(i.f_chmod), (128 bytes).
+    Removing ff.o(i.f_close), (54 bytes).
+    Removing ff.o(i.f_closedir), (48 bytes).
+    Removing ff.o(i.f_getfree), (208 bytes).
+    Removing ff.o(i.f_getlabel), (160 bytes).
+    Removing ff.o(i.f_gets), (72 bytes).
+    Removing ff.o(i.f_lseek), (684 bytes).
+    Removing ff.o(i.f_mkdir), (402 bytes).
+    Removing ff.o(i.f_mkfs), (1334 bytes).
+    Removing ff.o(i.f_mount), (132 bytes).
+    Removing ff.o(i.f_open), (480 bytes).
+    Removing ff.o(i.f_opendir), (194 bytes).
+    Removing ff.o(i.f_printf), (490 bytes).
+    Removing ff.o(i.f_putc), (60 bytes).
+    Removing ff.o(i.f_puts), (70 bytes).
+    Removing ff.o(i.f_read), (466 bytes).
+    Removing ff.o(i.f_readdir), (142 bytes).
+    Removing ff.o(i.f_rename), (352 bytes).
+    Removing ff.o(i.f_setlabel), (404 bytes).
+    Removing ff.o(i.f_stat), (106 bytes).
+    Removing ff.o(i.f_sync), (210 bytes).
+    Removing ff.o(i.f_truncate), (226 bytes).
+    Removing ff.o(i.f_unlink), (220 bytes).
+    Removing ff.o(i.f_utime), (132 bytes).
+    Removing ff.o(i.f_write), (538 bytes).
+    Removing ff.o(i.find_volume), (616 bytes).
+    Removing ff.o(i.follow_path), (114 bytes).
+    Removing ff.o(i.gen_numname), (140 bytes).
+    Removing ff.o(i.get_fat), (194 bytes).
+    Removing ff.o(i.get_fileinfo), (206 bytes).
+    Removing ff.o(i.get_ldnumber), (60 bytes).
+    Removing ff.o(i.inc_lock), (160 bytes).
+    Removing ff.o(i.ld_clust), (20 bytes).
+    Removing ff.o(i.lock_fs), (8 bytes).
+    Removing ff.o(i.mem_cpy), (18 bytes).
+    Removing ff.o(i.mem_set), (14 bytes).
+    Removing ff.o(i.move_window), (54 bytes).
+    Removing ff.o(i.put_fat), (248 bytes).
+    Removing ff.o(i.putc_bfd), (70 bytes).
+    Removing ff.o(i.remove_chain), (110 bytes).
+    Removing ff.o(i.st_clust), (16 bytes).
+    Removing ff.o(i.sum_sfn), (26 bytes).
+    Removing ff.o(i.sync_fs), (182 bytes).
+    Removing ff.o(i.sync_window), (96 bytes).
+    Removing ff.o(i.unlock_fs), (30 bytes).
+    Removing ff.o(i.validate), (64 bytes).
+    Removing ff.o(.bss), (36 bytes).
+    Removing ff.o(.constdata), (58 bytes).
+    Removing ff.o(.data), (2 bytes).
+    Removing ff_gen_drv.o(.rev16_text), (4 bytes).
+    Removing ff_gen_drv.o(.revsh_text), (4 bytes).
+    Removing ff_gen_drv.o(.rrx_text), (6 bytes).
+    Removing ff_gen_drv.o(i.FATFS_GetAttachedDriversNbr), (12 bytes).
+    Removing ff_gen_drv.o(i.FATFS_LinkDriver), (6 bytes).
+    Removing ff_gen_drv.o(i.FATFS_LinkDriverEx), (64 bytes).
+    Removing ff_gen_drv.o(i.FATFS_UnLinkDriver), (6 bytes).
+    Removing ff_gen_drv.o(i.FATFS_UnLinkDriverEx), (52 bytes).
+    Removing ff_gen_drv.o(.bss), (20 bytes).
+    Removing cc936.o(.rev16_text), (4 bytes).
+    Removing cc936.o(.revsh_text), (4 bytes).
+    Removing cc936.o(.rrx_text), (6 bytes).
+    Removing cc936.o(i.ff_convert), (76 bytes).
+    Removing cc936.o(i.ff_wtoupper), (36 bytes).
+    Removing cc936.o(.constdata), (175304 bytes).
+    Removing syscall.o(.rev16_text), (4 bytes).
+    Removing syscall.o(.revsh_text), (4 bytes).
+    Removing syscall.o(.rrx_text), (6 bytes).
+    Removing syscall.o(i.ff_cre_syncobj), (26 bytes).
+    Removing syscall.o(i.ff_del_syncobj), (10 bytes).
+    Removing syscall.o(i.ff_memalloc), (4 bytes).
+    Removing syscall.o(i.ff_memfree), (4 bytes).
+    Removing syscall.o(i.ff_rel_grant), (4 bytes).
+    Removing syscall.o(i.ff_req_grant), (20 bytes).
     Removing dadd.o(.text), (334 bytes).
     Removing ddiv.o(.text), (222 bytes).
     Removing dfixul.o(.text), (48 bytes).
     Removing cdrcmple.o(.text), (48 bytes).
 
-593 unused section(s) (total 48360 bytes) removed from the image.
+728 unused section(s) (total 237482 bytes) removed from the image.
 
 ==============================================================================
 
@@ -1944,46 +2426,51 @@ Image Symbol Table
     ../Src/stm32f4xx_hal_timebase_TIM.c      0x00000000   Number         0  stm32f4xx_hal_timebase_tim.o ABSOLUTE
     ../Src/stm32f4xx_it.c                    0x00000000   Number         0  stm32f4xx_it.o ABSOLUTE
     ../Src/usart.c                           0x00000000   Number         0  usart.o ABSOLUTE
-    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
     ../clib/microlib/division.c              0x00000000   Number         0  uidiv.o ABSOLUTE
+    ../clib/microlib/division.c              0x00000000   Number         0  uldiv.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry10a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry2.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8b.o ABSOLUTE
     ../clib/microlib/init/entry.s            0x00000000   Number         0  entry8a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7b.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry7a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry5.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry9a.o ABSOLUTE
-    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry.o ABSOLUTE
+    ../clib/microlib/init/entry.s            0x00000000   Number         0  entry11b.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llshl.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llsshr.o ABSOLUTE
     ../clib/microlib/longlong.c              0x00000000   Number         0  llushr.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloc.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocr.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  malloca.o ABSOLUTE
+    ../clib/microlib/malloc/malloc.c         0x00000000   Number         0  mallocra.o ABSOLUTE
+    ../clib/microlib/malloc/mvars.c          0x00000000   Number         0  mvars.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf2.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf8.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
-    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf0.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfb.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printfa.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf5.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf4.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf7.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf6.o ABSOLUTE
     ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf1.o ABSOLUTE
+    ../clib/microlib/printf/printf.c         0x00000000   Number         0  printf3.o ABSOLUTE
     ../clib/microlib/printf/stubs.s          0x00000000   Number         0  stubs.o ABSOLUTE
-    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpyb.o ABSOLUTE
+    ../clib/microlib/string/memcpy.c         0x00000000   Number         0  memcpya.o ABSOLUTE
     ../clib/microlib/string/memset.c         0x00000000   Number         0  memseta.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  iusefp.o ABSOLUTE
     ../clib/microlib/stubs.s                 0x00000000   Number         0  useno.o ABSOLUTE
     ../fplib/microlib/fpadd.c                0x00000000   Number         0  dadd.o ABSOLUTE
     ../fplib/microlib/fpdiv.c                0x00000000   Number         0  ddiv.o ABSOLUTE
     ../fplib/microlib/fpepilogue.c           0x00000000   Number         0  depilogue.o ABSOLUTE
-    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixui.o ABSOLUTE
+    ../fplib/microlib/fpfix.c                0x00000000   Number         0  dfixul.o ABSOLUTE
     ../fplib/microlib/fpflt.c                0x00000000   Number         0  dfltui.o ABSOLUTE
     ../fplib/microlib/fpmul.c                0x00000000   Number         0  dmul.o ABSOLUTE
     ..\Drivers\CMSIS\\Device\ST\STM32F4xx\Source\Templates\system_stm32f4xx.c 0x00000000   Number         0  system_stm32f4xx.o ABSOLUTE
@@ -2008,10 +2495,18 @@ Image Symbol Table
     ..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_fsmc.c 0x00000000   Number         0  stm32f4xx_ll_fsmc.o ABSOLUTE
     ..\Drivers\STM32F4xx_HAL_Driver\Src\stm32f4xx_ll_sdmmc.c 0x00000000   Number         0  stm32f4xx_ll_sdmmc.o ABSOLUTE
     ..\HADEWARE\SD_TEST.c                    0x00000000   Number         0  sd_test.o ABSOLUTE
+    ..\HADEWARE\bsp_driver_sd.c              0x00000000   Number         0  bsp_driver_sd.o ABSOLUTE
+    ..\HADEWARE\fatfs.c                      0x00000000   Number         0  fatfs.o ABSOLUTE
     ..\HADEWARE\lcd.c                        0x00000000   Number         0  lcd.o ABSOLUTE
     ..\HADEWARE\sd.c                         0x00000000   Number         0  sd.o ABSOLUTE
     ..\HADEWARE\sram.c                       0x00000000   Number         0  sram.o ABSOLUTE
     ..\MALLOC\malloc.c                       0x00000000   Number         0  malloc.o ABSOLUTE
+    ..\Middlewares\Third_Party\FatFs\src\diskio.c 0x00000000   Number         0  diskio.o ABSOLUTE
+    ..\Middlewares\Third_Party\FatFs\src\drivers\sd_diskio.c 0x00000000   Number         0  sd_diskio.o ABSOLUTE
+    ..\Middlewares\Third_Party\FatFs\src\ff.c 0x00000000   Number         0  ff.o ABSOLUTE
+    ..\Middlewares\Third_Party\FatFs\src\ff_gen_drv.c 0x00000000   Number         0  ff_gen_drv.o ABSOLUTE
+    ..\Middlewares\Third_Party\FatFs\src\option\cc936.c 0x00000000   Number         0  cc936.o ABSOLUTE
+    ..\Middlewares\Third_Party\FatFs\src\option\syscall.c 0x00000000   Number         0  syscall.o ABSOLUTE
     ..\Middlewares\Third_Party\FreeRTOS\Source\CMSIS_RTOS\cmsis_os.c 0x00000000   Number         0  cmsis_os.o ABSOLUTE
     ..\Middlewares\Third_Party\FreeRTOS\Source\portable\RVDS\ARM_CM4F\port.c 0x00000000   Number         0  port.o ABSOLUTE
     ..\SYSTEM\delay.c                        0x00000000   Number         0  delay.o ABSOLUTE
@@ -2030,10 +2525,18 @@ Image Symbol Table
     ..\Src\usart.c                           0x00000000   Number         0  usart.o ABSOLUTE
     ..\\Drivers\\STM32F4xx_HAL_Driver\\Src\\stm32f4xx_ll_fmc.c 0x00000000   Number         0  stm32f4xx_ll_fmc.o ABSOLUTE
     ..\\HADEWARE\\SD_TEST.c                  0x00000000   Number         0  sd_test.o ABSOLUTE
+    ..\\HADEWARE\\bsp_driver_sd.c            0x00000000   Number         0  bsp_driver_sd.o ABSOLUTE
+    ..\\HADEWARE\\fatfs.c                    0x00000000   Number         0  fatfs.o ABSOLUTE
     ..\\HADEWARE\\lcd.c                      0x00000000   Number         0  lcd.o ABSOLUTE
     ..\\HADEWARE\\sd.c                       0x00000000   Number         0  sd.o ABSOLUTE
     ..\\HADEWARE\\sram.c                     0x00000000   Number         0  sram.o ABSOLUTE
     ..\\MALLOC\\malloc.c                     0x00000000   Number         0  malloc.o ABSOLUTE
+    ..\\Middlewares\\Third_Party\\FatFs\\src\\diskio.c 0x00000000   Number         0  diskio.o ABSOLUTE
+    ..\\Middlewares\\Third_Party\\FatFs\\src\\drivers\\sd_diskio.c 0x00000000   Number         0  sd_diskio.o ABSOLUTE
+    ..\\Middlewares\\Third_Party\\FatFs\\src\\ff.c 0x00000000   Number         0  ff.o ABSOLUTE
+    ..\\Middlewares\\Third_Party\\FatFs\\src\\ff_gen_drv.c 0x00000000   Number         0  ff_gen_drv.o ABSOLUTE
+    ..\\Middlewares\\Third_Party\\FatFs\\src\\option\\cc936.c 0x00000000   Number         0  cc936.o ABSOLUTE
+    ..\\Middlewares\\Third_Party\\FatFs\\src\\option\\syscall.c 0x00000000   Number         0  syscall.o ABSOLUTE
     ..\\SYSTEM\\delay.c                      0x00000000   Number         0  delay.o ABSOLUTE
     ..\\SYSTEM\\sys.c                        0x00000000   Number         0  sys.o ABSOLUTE
     ..\\SYSTEM\\usrt.c                       0x00000000   Number         0  usrt.o ABSOLUTE
@@ -2763,29 +3266,29 @@ Memory Map of the image
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
     0x08000000   0x00000188   Data   RO         3904    RESET               startup_stm32f407xx.o
-    0x08000188   0x00000000   Code   RO         5029  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
-    0x08000188   0x00000004   Code   RO         5305    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
-    0x0800018c   0x00000004   Code   RO         5308    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
-    0x08000190   0x00000000   Code   RO         5310    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
-    0x08000190   0x00000000   Code   RO         5312    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
-    0x08000190   0x00000008   Code   RO         5313    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
-    0x08000198   0x00000000   Code   RO         5315    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
-    0x08000198   0x00000000   Code   RO         5317    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
-    0x08000198   0x00000004   Code   RO         5306    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
+    0x08000188   0x00000000   Code   RO         5823  * .ARM.Collect$$$$00000000  mc_w.l(entry.o)
+    0x08000188   0x00000004   Code   RO         6127    .ARM.Collect$$$$00000001  mc_w.l(entry2.o)
+    0x0800018c   0x00000004   Code   RO         6130    .ARM.Collect$$$$00000004  mc_w.l(entry5.o)
+    0x08000190   0x00000000   Code   RO         6132    .ARM.Collect$$$$00000008  mc_w.l(entry7b.o)
+    0x08000190   0x00000000   Code   RO         6134    .ARM.Collect$$$$0000000A  mc_w.l(entry8b.o)
+    0x08000190   0x00000008   Code   RO         6135    .ARM.Collect$$$$0000000B  mc_w.l(entry9a.o)
+    0x08000198   0x00000000   Code   RO         6137    .ARM.Collect$$$$0000000D  mc_w.l(entry10a.o)
+    0x08000198   0x00000000   Code   RO         6139    .ARM.Collect$$$$0000000F  mc_w.l(entry11a.o)
+    0x08000198   0x00000004   Code   RO         6128    .ARM.Collect$$$$00002712  mc_w.l(entry2.o)
     0x0800019c   0x000000ba   Code   RO          953    .emb_text           port.o
     0x08000256   0x00000002   PAD
     0x08000258   0x00000024   Code   RO         3905    .text               startup_stm32f407xx.o
-    0x0800027c   0x00000024   Code   RO         5032    .text               mc_w.l(memcpya.o)
-    0x080002a0   0x00000024   Code   RO         5034    .text               mc_w.l(memseta.o)
-    0x080002c4   0x000000e4   Code   RO         5299    .text               mf_w.l(dmul.o)
-    0x080003a8   0x0000001a   Code   RO         5301    .text               mf_w.l(dfltui.o)
-    0x080003c2   0x00000032   Code   RO         5303    .text               mf_w.l(dfixui.o)
-    0x080003f4   0x00000062   Code   RO         5321    .text               mc_w.l(uldiv.o)
-    0x08000456   0x00000020   Code   RO         5323    .text               mc_w.l(llushr.o)
-    0x08000476   0x00000000   Code   RO         5325    .text               mc_w.l(iusefp.o)
-    0x08000476   0x000000ba   Code   RO         5326    .text               mf_w.l(depilogue.o)
-    0x08000530   0x00000024   Code   RO         5336    .text               mc_w.l(init.o)
-    0x08000554   0x0000001e   Code   RO         5338    .text               mc_w.l(llshl.o)
+    0x0800027c   0x00000024   Code   RO         5826    .text               mc_w.l(memcpya.o)
+    0x080002a0   0x00000024   Code   RO         5828    .text               mc_w.l(memseta.o)
+    0x080002c4   0x000000e4   Code   RO         6121    .text               mf_w.l(dmul.o)
+    0x080003a8   0x0000001a   Code   RO         6123    .text               mf_w.l(dfltui.o)
+    0x080003c2   0x00000032   Code   RO         6125    .text               mf_w.l(dfixui.o)
+    0x080003f4   0x00000062   Code   RO         6143    .text               mc_w.l(uldiv.o)
+    0x08000456   0x00000020   Code   RO         6145    .text               mc_w.l(llushr.o)
+    0x08000476   0x00000000   Code   RO         6149    .text               mc_w.l(iusefp.o)
+    0x08000476   0x000000ba   Code   RO         6150    .text               mf_w.l(depilogue.o)
+    0x08000530   0x00000024   Code   RO         6160    .text               mc_w.l(init.o)
+    0x08000554   0x0000001e   Code   RO         6162    .text               mc_w.l(llshl.o)
     0x08000572   0x00000002   Code   RO         4086    i.BusFault_Handler  stm32f4xx_it.o
     0x08000574   0x0000000c   Code   RO         4087    i.DMA2_Stream3_IRQHandler  stm32f4xx_it.o
     0x08000580   0x0000000c   Code   RO         4088    i.DMA2_Stream6_IRQHandler  stm32f4xx_it.o
@@ -2871,25 +3374,25 @@ Memory Map of the image
     0x080024da   0x00000002   Code   RO         4090    i.HardFault_Handler  stm32f4xx_it.o
     0x080024dc   0x00000058   Code   RO         4454    i.KEY_Init          key.o
     0x08002534   0x000000cc   Code   RO         4455    i.KEY_Scan          key.o
-    0x08002600   0x00000068   Code   RO         4606    i.LCD_Clear         lcd.o
-    0x08002668   0x00000134   Code   RO         4610    i.LCD_Display_Dir   lcd.o
-    0x0800279c   0x00000118   Code   RO         4615    i.LCD_Fast_DrawPoint  lcd.o
-    0x080028b4   0x00003506   Code   RO         4617    i.LCD_Init          lcd.o
-    0x08005dba   0x00000010   Code   RO         4618    i.LCD_Pow           lcd.o
-    0x08005dca   0x00000014   Code   RO         4619    i.LCD_RD_DATA       lcd.o
-    0x08005dde   0x00000014   Code   RO         4621    i.LCD_ReadReg       lcd.o
+    0x08002600   0x00000068   Code   RO         4772    i.LCD_Clear         lcd.o
+    0x08002668   0x00000134   Code   RO         4776    i.LCD_Display_Dir   lcd.o
+    0x0800279c   0x00000118   Code   RO         4781    i.LCD_Fast_DrawPoint  lcd.o
+    0x080028b4   0x00003506   Code   RO         4783    i.LCD_Init          lcd.o
+    0x08005dba   0x00000010   Code   RO         4784    i.LCD_Pow           lcd.o
+    0x08005dca   0x00000014   Code   RO         4785    i.LCD_RD_DATA       lcd.o
+    0x08005dde   0x00000014   Code   RO         4787    i.LCD_ReadReg       lcd.o
     0x08005df2   0x00000002   PAD
-    0x08005df4   0x00000050   Code   RO         4622    i.LCD_SSD_BackLightSet  lcd.o
-    0x08005e44   0x00000204   Code   RO         4623    i.LCD_Scan_Dir      lcd.o
-    0x08006048   0x0000015c   Code   RO         4624    i.LCD_SetCursor     lcd.o
-    0x080061a4   0x000000d4   Code   RO         4626    i.LCD_ShowChar      lcd.o
-    0x08006278   0x00000076   Code   RO         4627    i.LCD_ShowNum       lcd.o
-    0x080062ee   0x00000054   Code   RO         4628    i.LCD_ShowString    lcd.o
-    0x08006342   0x00000018   Code   RO         4630    i.LCD_WR_DATA       lcd.o
-    0x0800635a   0x00000018   Code   RO         4631    i.LCD_WR_REG        lcd.o
+    0x08005df4   0x00000050   Code   RO         4788    i.LCD_SSD_BackLightSet  lcd.o
+    0x08005e44   0x00000204   Code   RO         4789    i.LCD_Scan_Dir      lcd.o
+    0x08006048   0x0000015c   Code   RO         4790    i.LCD_SetCursor     lcd.o
+    0x080061a4   0x000000d4   Code   RO         4792    i.LCD_ShowChar      lcd.o
+    0x08006278   0x00000076   Code   RO         4793    i.LCD_ShowNum       lcd.o
+    0x080062ee   0x00000054   Code   RO         4794    i.LCD_ShowString    lcd.o
+    0x08006342   0x00000018   Code   RO         4796    i.LCD_WR_DATA       lcd.o
+    0x0800635a   0x00000018   Code   RO         4797    i.LCD_WR_REG        lcd.o
     0x08006372   0x00000002   PAD
-    0x08006374   0x00000014   Code   RO         4633    i.LCD_WriteRAM_Prepare  lcd.o
-    0x08006388   0x0000000c   Code   RO         4634    i.LCD_WriteReg      lcd.o
+    0x08006374   0x00000014   Code   RO         4799    i.LCD_WriteRAM_Prepare  lcd.o
+    0x08006388   0x0000000c   Code   RO         4800    i.LCD_WriteReg      lcd.o
     0x08006394   0x0000003c   Code   RO         4388    i.MX_DMA_Init       dma.o
     0x080063d0   0x00000080   Code   RO         3976    i.MX_FREERTOS_Init  freertos.o
     0x08006450   0x000000cc   Code   RO         4343    i.MX_FSMC_Init      fsmc.o
@@ -2904,7 +3407,7 @@ Memory Map of the image
     0x0800670a   0x00000008   Code   RO         3575    i.SDIO_GetPowerState  stm32f4xx_ll_sdmmc.o
     0x08006712   0x00000002   PAD
     0x08006714   0x00000010   Code   RO         3576    i.SDIO_GetResponse  stm32f4xx_ll_sdmmc.o
-    0x08006724   0x0000000c   Code   RO         4815    i.SDIO_IRQHandler   sd.o
+    0x08006724   0x0000000c   Code   RO         4981    i.SDIO_IRQHandler   sd.o
     0x08006730   0x00000024   Code   RO         3577    i.SDIO_Init         stm32f4xx_ll_sdmmc.o
     0x08006754   0x00000008   Code   RO         3579    i.SDIO_PowerState_ON  stm32f4xx_ll_sdmmc.o
     0x0800675c   0x00000006   Code   RO         3580    i.SDIO_ReadFIFO     stm32f4xx_ll_sdmmc.o
@@ -2919,8 +3422,8 @@ Memory Map of the image
     0x08006976   0x0000010a   Code   RO         3700    i.SD_FindSCR        stm32f4xx_hal_sd.o
     0x08006a80   0x000000dc   Code   RO         3701    i.SD_Initialize_Cards  stm32f4xx_hal_sd.o
     0x08006b5c   0x00000174   Code   RO         3703    i.SD_PowerON        stm32f4xx_hal_sd.o
-    0x08006cd0   0x00000044   Code   RO         4817    i.SD_ReadBlocks_DMA  sd.o
-    0x08006d14   0x0000008c   Code   RO         4818    i.SD_ReadDisk       sd.o
+    0x08006cd0   0x00000044   Code   RO         4983    i.SD_ReadBlocks_DMA  sd.o
+    0x08006d14   0x0000008c   Code   RO         4984    i.SD_ReadDisk       sd.o
     0x08006da0   0x00000072   Code   RO         3704    i.SD_WideBus_Disable  stm32f4xx_hal_sd.o
     0x08006e12   0x00000074   Code   RO         3705    i.SD_WideBus_Enable  stm32f4xx_hal_sd.o
     0x08006e86   0x00000008   Code   RO         3977    i.StartDefaultTask  freertos.o
@@ -2937,30 +3440,30 @@ Memory Map of the image
     0x080073b4   0x00000062   Code   RO         2571    i.UART_Transmit_IT  stm32f4xx_hal_uart.o
     0x08007416   0x00000064   Code   RO         2572    i.UART_WaitOnFlagUntilTimeout  stm32f4xx_hal_uart.o
     0x0800747a   0x00000002   PAD
-    0x0800747c   0x00000070   Code   RO         4544    i.USART1_IRQHandler  usrt.o
-    0x080074ec   0x00000070   Code   RO         4545    i.USART3_IRQHandler  usrt.o
+    0x0800747c   0x00000070   Code   RO         4710    i.USART1_IRQHandler  usrt.o
+    0x080074ec   0x00000070   Code   RO         4711    i.USART3_IRQHandler  usrt.o
     0x0800755c   0x00000002   Code   RO         4095    i.UsageFault_Handler  stm32f4xx_it.o
     0x0800755e   0x00000002   PAD
-    0x08007560   0x00000020   Code   RO         5171    i.__0printf$5       mc_w.l(printf5.o)
-    0x08007580   0x0000000e   Code   RO         5344    i.__scatterload_copy  mc_w.l(handlers.o)
-    0x0800758e   0x00000002   Code   RO         5345    i.__scatterload_null  mc_w.l(handlers.o)
-    0x08007590   0x0000000e   Code   RO         5346    i.__scatterload_zeroinit  mc_w.l(handlers.o)
+    0x08007560   0x00000020   Code   RO         5965    i.__0printf$5       mc_w.l(printf5.o)
+    0x08007580   0x0000000e   Code   RO         6168    i.__scatterload_copy  mc_w.l(handlers.o)
+    0x0800758e   0x00000002   Code   RO         6169    i.__scatterload_null  mc_w.l(handlers.o)
+    0x08007590   0x0000000e   Code   RO         6170    i.__scatterload_zeroinit  mc_w.l(handlers.o)
     0x0800759e   0x00000002   PAD
-    0x080075a0   0x000002c0   Code   RO         5178    i._printf_core      mc_w.l(printf5.o)
-    0x08007860   0x0000001a   Code   RO         4486    i.delay_ms          delay.o
+    0x080075a0   0x000002c0   Code   RO         5972    i._printf_core      mc_w.l(printf5.o)
+    0x08007860   0x0000001a   Code   RO         4652    i.delay_ms          delay.o
     0x0800787a   0x00000002   PAD
-    0x0800787c   0x00000034   Code   RO         4487    i.delay_us          delay.o
-    0x080078b0   0x00000014   Code   RO         4547    i.fputc             usrt.o
+    0x0800787c   0x00000034   Code   RO         4653    i.delay_us          delay.o
+    0x080078b0   0x00000014   Code   RO         4713    i.fputc             usrt.o
     0x080078c4   0x0000002a   Code   RO         4183    i.main              main.o
     0x080078ee   0x0000000c   Code   RO            5    i.makeFreeRtosPriority  cmsis_os.o
     0x080078fa   0x00000002   PAD
-    0x080078fc   0x00000058   Code   RO         4949    i.my_mem_free       malloc.o
-    0x08007954   0x0000003c   Code   RO         4950    i.my_mem_init       malloc.o
-    0x08007990   0x00000090   Code   RO         4951    i.my_mem_malloc     malloc.o
-    0x08007a20   0x00000038   Code   RO         4952    i.my_mem_perused    malloc.o
-    0x08007a58   0x00000018   Code   RO         4953    i.myfree            malloc.o
-    0x08007a70   0x00000020   Code   RO         4954    i.mymalloc          malloc.o
-    0x08007a90   0x0000000e   Code   RO         4956    i.mymemset          malloc.o
+    0x080078fc   0x00000058   Code   RO         5115    i.my_mem_free       malloc.o
+    0x08007954   0x0000003c   Code   RO         5116    i.my_mem_init       malloc.o
+    0x08007990   0x00000090   Code   RO         5117    i.my_mem_malloc     malloc.o
+    0x08007a20   0x00000038   Code   RO         5118    i.my_mem_perused    malloc.o
+    0x08007a58   0x00000018   Code   RO         5119    i.myfree            malloc.o
+    0x08007a70   0x00000020   Code   RO         5120    i.mymalloc          malloc.o
+    0x08007a90   0x0000000e   Code   RO         5122    i.mymemset          malloc.o
     0x08007a9e   0x0000000e   Code   RO            6    i.osDelay           cmsis_os.o
     0x08007aac   0x0000000a   Code   RO            9    i.osKernelStart     cmsis_os.o
     0x08007ab6   0x00000014   Code   RO           38    i.osSystickHandler  cmsis_os.o
@@ -2975,7 +3478,7 @@ Memory Map of the image
     0x08007c6c   0x00000028   Code   RO          954    i.prvTaskExitError  port.o
     0x08007c94   0x000000d8   Code   RO          609    i.pvPortMalloc      heap_4.o
     0x08007d6c   0x00000028   Code   RO          955    i.pxPortInitialiseStack  port.o
-    0x08007d94   0x00000118   Code   RO         4912    i.show_sdcard_info  sd_test.o
+    0x08007d94   0x00000118   Code   RO         5078    i.show_sdcard_info  sd_test.o
     0x08007eac   0x00000024   Code   RO          571    i.uxListRemove      list.o
     0x08007ed0   0x00000016   Code   RO          572    i.vListInitialise   list.o
     0x08007ee6   0x00000006   Code   RO          573    i.vListInitialiseItem  list.o
@@ -2998,11 +3501,11 @@ Memory Map of the image
     0x080085c8   0x00000008   Data   RO         2441    .constdata          stm32f4xx_hal_dma.o
     0x080085d0   0x00000010   Data   RO         3157    .constdata          stm32f4xx_hal_rcc.o
     0x080085e0   0x00000064   Data   RO         3978    .constdata          freertos.o
-    0x08008644   0x000017c0   Data   RO         4637    .constdata          lcd.o
-    0x08009e04   0x00000024   Data   RO         4964    .constdata          malloc.o
+    0x08008644   0x000017c0   Data   RO         4803    .constdata          lcd.o
+    0x08009e04   0x00000024   Data   RO         5130    .constdata          malloc.o
     0x08009e28   0x0000003b   Data   RO         3979    .conststring        freertos.o
     0x08009e63   0x00000001   PAD
-    0x08009e64   0x00000020   Data   RO         5342    Region$$Table       anon$$obj.o
+    0x08009e64   0x00000020   Data   RO         6166    Region$$Table       anon$$obj.o
 
 
     Execution Region RW_IRAM1 (Base: 0x20000000, Size: 0x0001f120, Max: 0x00020000, ABSOLUTE)
@@ -3018,26 +3521,26 @@ Memory Map of the image
     0x20000078   0x00000008   Data   RW         4345    .data               fsmc.o
     0x20000080   0x00000001   Data   RW         4456    .data               key.o
     0x20000081   0x00000003   PAD
-    0x20000084   0x00000004   Data   RW         4488    .data               delay.o
-    0x20000088   0x00000004   Data   RW         4550    .data               usrt.o
-    0x2000008c   0x00000004   Data   RW         4551    .data               usrt.o
-    0x20000090   0x00000001   Data   RW         4552    .data               usrt.o
+    0x20000084   0x00000004   Data   RW         4654    .data               delay.o
+    0x20000088   0x00000004   Data   RW         4716    .data               usrt.o
+    0x2000008c   0x00000004   Data   RW         4717    .data               usrt.o
+    0x20000090   0x00000001   Data   RW         4718    .data               usrt.o
     0x20000091   0x00000001   PAD
-    0x20000092   0x00000004   Data   RW         4639    .data               lcd.o
+    0x20000092   0x00000004   Data   RW         4805    .data               lcd.o
     0x20000096   0x00000002   PAD
-    0x20000098   0x00000024   Data   RW         4965    .data               malloc.o
+    0x20000098   0x00000024   Data   RW         5131    .data               malloc.o
     0x200000bc   0x00003c00   Zero   RW          614    .bss                heap_4.o
     0x20003cbc   0x000000f0   Zero   RW          711    .bss                tasks.o
     0x20003dac   0x0000003c   Zero   RW         4237    .bss                stm32f4xx_hal_timebase_tim.o
     0x20003de8   0x00000040   Zero   RW         4301    .bss                usart.o
     0x20003e28   0x000000a0   Zero   RW         4344    .bss                fsmc.o
     0x20003ec8   0x00000178   Zero   RW         4415    .bss                sdio.o
-    0x20004040   0x000001d0   Zero   RW         4549    .bss                usrt.o
-    0x20004210   0x0000000e   Zero   RW         4636    .bss                lcd.o
+    0x20004040   0x000001d0   Zero   RW         4715    .bss                usrt.o
+    0x20004210   0x0000000e   Zero   RW         4802    .bss                lcd.o
     0x2000421e   0x00000002   PAD
-    0x20004220   0x00000200   Zero   RW         4821    .bss                sd.o
-    0x20004420   0x00019000   Zero   RW         4962    .bss                malloc.o
-    0x2001d420   0x00001900   Zero   RW         4963    .bss                malloc.o
+    0x20004220   0x00000200   Zero   RW         4987    .bss                sd.o
+    0x20004420   0x00019000   Zero   RW         5128    .bss                malloc.o
+    0x2001d420   0x00001900   Zero   RW         5129    .bss                malloc.o
     0x2001ed20   0x00000400   Zero   RW         3902    STACK               startup_stm32f407xx.o
 
 
@@ -3048,7 +3551,7 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x10000000   0x0000f000   Zero   RW         4958    .ARM.__AT_0x10000000  malloc.o
+    0x10000000   0x0000f000   Zero   RW         5124    .ARM.__AT_0x10000000  malloc.o
 
 
 
@@ -3058,7 +3561,7 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x1000f000   0x00000f00   Zero   RW         4959    .ARM.__AT_0x1000F000  malloc.o
+    0x1000f000   0x00000f00   Zero   RW         5125    .ARM.__AT_0x1000F000  malloc.o
 
 
 
@@ -3068,7 +3571,7 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x68000000   0x000f0000   Zero   RW         4960    .ARM.__AT_0x68000000  malloc.o
+    0x68000000   0x000f0000   Zero   RW         5126    .ARM.__AT_0x68000000  malloc.o
 
 
 
@@ -3078,7 +3581,7 @@ Memory Map of the image
 
     Base Addr    Size         Type   Attr      Idx    E Section Name        Object
 
-    0x680f0000   0x0000f000   Zero   RW         4961    .ARM.__AT_0x680F0000  malloc.o
+    0x680f0000   0x0000f000   Zero   RW         5127    .ARM.__AT_0x680F0000  malloc.o
 
 
 ==============================================================================
